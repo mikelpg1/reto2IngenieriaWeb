@@ -1,0 +1,8 @@
+{%extends "base.html"%}
+
+{% block links %}
+	<li><a href="{% url 'base' %}">Inicio</a></li>
+	<li><a href="{% url 'pedidos' %}">gestion de pedidos</a></li>
+	<li class="active"><a href="{% url 'catalogo' %}">ver productos disponibles </a></li>
+	<li><a href="{% url 'contacto' %}">Contact</a></li>
+{% endblock %}
