@@ -26,7 +26,7 @@ class Cliente(models.Model):
     cliente_CIF = models.CharField(max_length=9, primary_key=True)
     cliente_nombreEmpresa = models.CharField(max_length=45)
     cliente_direccion = models.CharField(max_length=45)
-    clientw_datosContacto = models.CharField(max_length= 45)
+    cliente_datosContacto = models.CharField(max_length= 45)
     
     def __str__(self):
         return self.cliente_nombreEmpresa
