@@ -1,0 +1,35 @@
+<!--Heredamos todos los elementos de base.html-->
+{% extends "base.html" %}
+{% load static %}
+
+<!--Bloque content, que varia dependiendo el html.-->
+{% block content %}
+    <header>
+        <h2 class="pagSecundarias">AÑADIR NUEVO PEDIDO</h2>
+        <hr>
+    </header>
+
+    <!--Formulario para añadir un pedido nuevo mediante el metodo post.-->
+    <form class="acciones" action="{% url 'anyadirPedido' %}" method="post">
+        {% csrf_token %}
+        <!--Cargamos los campos del formulario indicados en el metodo get dentro de nuestra vista-->
+        <ul class="formularios">
+            <li>
+                <label for="id_Fecha">Fecha (año-mes-día) <span class="required">*</span></label>
+                {{ form.fecha }}
+            </li>
+            <li>
+                <label for="id_precioTotal">Precio Total<span class="required">*</span></label>
+                {{ form.precioTotal }} 
+            </li>
+            <li>
+                <label for="id_cliente">Cliente <span class="required">*</span></label>
+                {{ form.cliente }} 
+            </li>
+        </ul>
+
+        <p class = "aviso">AVISO: Para asignar un pedido a un producto con una catidad determinada vaya a la pestaña 'ASIGNAR PRODUCTO' dentro de 'GESTIÓN DE PEDIDOS'</p>
+
+        <input type="submit" value="Nuevo pedido">
+    </form>
+{% endblock %}

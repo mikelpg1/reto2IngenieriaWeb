@@ -1,0 +1,33 @@
+<!--Heredamos todos los elementos de base.html-->
+{% extends "base.html" %}
+{% load static %}
+
+<!--Bloque content, que varia dependiendo el html.-->
+{% block content %}
+    <header>
+        <h2 class="pagSecundarias">ASIGNAR PEDIDO-PRODUCTO</h2>
+        <hr>
+    </header>
+
+    <!--Formulario para asignar la cantidad de un producto ya existente a un pedido mediante el metodo post.-->
+    <form class="acciones" action="{% url 'anyadirPedidoProducto' %}" method="post">
+        {% csrf_token %}
+        <!--Cargamos los campos del formulario indicados en el metodo get dentro de nuestra vista-->
+        <ul class="formularios">
+            <li>
+                <label for="id_pedido">Pedido <span class="required">*</span></label>
+                {{ form.pedido }}
+            </li>
+            <li>
+                <label for="id_producto">Producto <span class="required">*</span></label>
+                {{ form.producto }} 
+            </li>
+            <li>
+                <label for="id_cantidad">Cantidad <span class="required">*</span></label>
+                {{ form.cantidad }} 
+            </li>
+        </ul>
+
+        <input type="submit" value="Asignar">
+    </form>
+{% endblock %}

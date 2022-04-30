@@ -1,0 +1,19 @@
+<!--Heredamos todos los elementos de base.html-->
+{% extends "base.html" %}
+{% load static %}
+
+<!--Bloque content, que varia dependiendo el html.-->
+{% block content %}
+    <header>
+        <h2 class="pagSecundarias">ELIMINAR COMPONENTE: {{ componente.nombre }}</h2>
+        <hr>
+    </header>
+
+    <div class = "formularios">
+        <!--Formulario para eliminar un componente existente mediante el metodo post. La accion se desarrolla mediante el id del componente.-->
+        <form class="acciones" method="POST" action=".">
+            <p>Está seguro que desea eliminar: {{ componente.nombre }}?</p>
+            <input type="submit" value="Eliminar">
+        </form>
+    </div>
+{% endblock %}

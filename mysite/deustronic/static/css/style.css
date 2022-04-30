@@ -1,0 +1,666 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+/*MENÚ NAVEGACIÓN --> IGUAL PARA TODOS*/
+.nav-fijado{
+    width: 100%;
+    position: fixed;
+    z-index: 1;
+    border-bottom: 2px solid rgb(241, 241, 241);
+    background-color: rgb(86, 85, 85);
+}
+
+.menu{
+    margin-left: auto;
+    margin-right: auto;
+    font-family: "calibri";
+    width: 100%;
+}
+
+.menu img{
+    float: left;
+    padding-top: 0px;
+    padding-left: 15px;
+    padding-bottom: 0px;
+}
+
+.menu ul {
+    margin: auto;
+    list-style: none;
+    padding-right: 20px;
+    float: right;
+}
+.menu li{
+    display: inline-block;
+}
+
+.menu li a {
+    text-decoration: none;
+    color: rgb(255, 255, 255);  
+    font-size: 15px;
+    padding-top: 30px;
+    padding-right: 15px;
+    transition: color 0.4s;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.menu li p {
+    text-decoration: none;
+    color: rgb(255, 255, 255);  
+    font-size: 15px;
+    padding-top: 35px;
+    padding-right: 15px;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.menu #saludo-usuario{
+    font-size: 13px;
+}
+
+.menu > li{
+    float: right;
+}
+
+.menu li a:hover{
+    color: gainsboro;
+}
+
+.menu ul li ul {
+    /*Organizacion de lista anidada*/
+    position: absolute;
+    visibility: hidden;
+}
+
+.menu ul li ul li {
+    /*Organizacion*/
+    display: flex;
+    padding-left: 8px;
+    padding-bottom: 5px;
+    min-width: 100px;
+    /*Estetica*/
+    background-color:  rgb(109, 106, 106);;  
+}
+
+/*Condicion para que se haga visible la lista anidada*/
+.menu ul li:hover > ul {
+    /*Hace visble la lista anidada cuando se pone encima el cursor*/
+    visibility: visible; 
+}
+
+/*PIE DE PÁGINA --> IGUAL PARA TODOS*/
+.pie{
+    background-color: rgb(33, 37, 41);
+    min-height: 95px;
+    height: 100%;
+    width: 100%;
+    bottom: 0;
+    clear: right;
+    clear: left;
+    display: flex;
+    align-items: center;
+}
+
+.pie #redes {
+    display: block;
+    margin: 0px auto;
+    text-align: cen;
+}
+
+.pie #saberMas{
+    text-align: center;
+    width: 700px;
+    padding: 10px;
+    font-family: "poppins", Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    color: gainsboro;
+}
+
+.pie #saberMas button{
+    padding: 3px;
+}
+
+.pie #textoMasInfo{
+    padding: 5px;
+    text-align: justify;
+    margin-left: 80px;
+}
+
+.pie #textoMasInfo ul {
+    list-style: circle inside;
+    margin-left: 10px;
+}
+
+.pie img{
+    margin-top: 10px;
+    margin-left: 15px;
+}
+
+/*ELEMENTOS COMUNES PARA TODAS LAS PÁGINAS --> IGUAL PARA TODOS*/
+body {
+    height: 100%;
+    background-color: rgb(241, 241, 241);
+}
+
+main{
+    min-height: 521px;
+    height: 100%;
+    padding: 15px;
+}
+
+main h2{
+    padding: 20px;
+    font-family: "poppins", Arial, Helvetica, sans-serif;
+    font-size: 45px;
+    color: black;
+}
+
+    /*TÍTULO (H2) Y LÍNEA (HR) DE LAS PÁGINAS SECUNDARIAS*/
+    .pagSecundarias{
+        padding-top: 100px;
+    }
+
+    hr{
+        margin: auto;
+        margin-top: -15px;
+        height: 5px;
+        width: 99%;
+        background-color: black;
+    }
+
+
+/* PÁG. PRINCIPAL*/
+/*CABECERA DE LA PAGINA PRINCIPAL*/
+#cabecera-pag-princ{
+    height: 700px;
+    width: 100%;
+    background-image: url(../IMG/pag-princ.jpg);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#cabecera-pag-princ #titulo{
+    background: rgba(0,0,0,.4);
+    text-align: center;
+    padding-top: 110px;
+    padding-bottom: 0px;
+}
+
+#cabecera-pag-princ img{
+padding-top: 0px;
+
+}
+
+#cabecera-pag-princ h1{
+    font-family: "montserrat", Arial, Helvetica, sans-serif;
+    font-size: 50px;
+    font-weight: 500px;
+    color: white;
+}
+
+#cabecera-pag-princ h2{
+    font-family: "poppins", Arial, Helvetica, sans-serif;
+    font-size: 30px;
+    color: white;
+    padding-bottom: 15px;
+}
+
+/*LISTADO DE PRODUCTOS Y LISTADO DE CLIENTES*/
+#listadosIzq{
+    float: left;
+    width: 49%;
+    margin-left: 10px;
+}
+
+/*LISTADO DE PEDIDOS Y LISTADO DE COMPONENTES*/
+#listadosDcha{
+    float: right;
+    width: 49%;
+    margin-right: 10px;
+}
+
+/*FORMATO DE LISTADOS -> IGUAL PARA TODOS LOS LISTADOS*/
+.listados header{
+    padding: 30px;
+    font-family: "montserrat";
+    font-size: 25px;
+    color: rgb(241, 241, 241);
+    background-color: rgba(0, 0, 0, .7);
+}
+
+.listados h3 span{
+    background: black;
+    color: rgb(241, 241, 241);
+    border: solid rgb(241, 241, 241);
+    border-radius: 50%;
+    display: inline-block;
+    text-align: center;
+    width: 35px;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.listadosContenido ul{
+    height: 300px;
+    overflow:hidden; 
+}
+
+.listadosContenido {
+    height: 300px;
+    margin-bottom: 15px;
+    padding: 5px;
+    justify-content: center;
+    align-items: center;
+    font-family: Calibri, Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 20px;
+}
+
+.listadosContenido ul li {
+    width: 100%;
+    list-style: none;
+    padding: 10px;
+}
+
+.listadosContenido ul li:hover{
+    background-color: rgba(0, 0, 0, .65);
+    transition: background-color 0.5s;
+    color: gainsboro;
+}
+
+.listadosContenido ul li span{
+    border: solid 2px black;
+    background-color: rgba(0, 0, 0);
+    color: gainsboro;
+    display: inline-block;
+    text-align: center;
+    width: 33px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size: 13px;
+    margin-right: 15px;
+    margin-left: 10px;
+}
+
+.listadosContenido a {
+    text-decoration: none;
+    color: black;
+}
+
+.añadir:hover{
+    color: rgb(136, 136, 136);
+    transition: color 0.4s;
+}
+
+#sinAcceso{
+    display: block;
+    margin: auto;
+    text-align: center;
+    padding: 20px;
+    padding-top: 60px;
+    font-family: Calibri, Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#sinAcceso h4{
+    font-size: 30px;
+    color: #d1052a;
+}
+
+#sinAcceso p{
+    font-size: 20px;
+    padding: 5px;
+}
+
+#sinAcceso p a{
+    color: black;
+    text-decoration: none;
+    font-weight: 800;
+    transition: color 1s;
+}
+
+#sinAcceso p a:hover{
+    color: rgb(75, 75, 75);
+}
+
+/*BOTON DE ELIMINAR EN LISTADOS*/
+.eliminar{
+    font-size: 13px;
+    float: right;
+    margin-right: 15px;
+    padding: 3px;
+    background-color: #d1052a;
+    border: black solid 2px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.eliminar:hover{
+    background-color: #ff6565;
+    transition: background-color 0.5s;
+}
+
+/*BOTON DE MEODIFICAR EN LISTADOS*/
+.modificar{
+    font-size: 13px;
+    float: right;
+    margin-right: 15px;
+    padding: 3px;
+    background-color: #5086c1;
+    border: black solid 2px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.modificar:hover{
+    background-color: #6a9eda;
+    transition: background-color 0.5s;
+}
+
+/*BOTON DE DETALLES EN LISTADOS*/
+.detalles{
+    font-size: 13px;
+    float: right;
+    margin-right: 15px;
+    padding: 3px;
+    background-color: #42ab49;
+    border: black solid 2px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.detalles:hover{
+    background-color: #5dc460;
+    transition: background-color 0.5s;
+}
+
+/*POSICION DE LOS LISTADOS*/
+.listadosContenido h4{
+    text-align: center;
+    padding-top: 20px;
+}
+
+.listadosContenido p{
+    text-align: center;
+    padding-top: 10px;
+}
+
+.listadosContenido p a{
+    font-size: 20px;
+    font-weight: 800;
+}
+
+/* PAGINACIÓN */
+
+ul.pagination {
+    display: inline-block;
+    padding: 10px;
+    margin: 0;
+    font-size: 15px;
+    font-family: Calibri, Verdana, Geneva, Tahoma, sans-serif;
+}
+
+ul.pagination li {
+    display: inline;
+}
+
+ul.pagination li a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color .3s;
+}
+
+ul.pagination li a.active {
+    background-color: black;
+    color: white;
+}
+
+ul.pagination li a:hover:not(.active) {
+    background-color: #ddd;
+}
+
+div.center {
+    text-align: center;
+}
+
+/*FORMATO DE LA VISUALIZACION DE DETALLE*/
+#botones{
+    margin: 10px;
+}
+
+#botones button{
+    padding: 10px;
+    border: 0px;
+    background-color: black;
+    color: gainsboro;
+    transition: background-color 1s;
+}
+
+#botones button:hover{
+    cursor: pointer;
+    background-color: rgb(85, 84, 84);
+}
+
+.detalle{
+    padding: 30px;
+    padding-top: 10px;
+    width: 55%;
+    margin: auto;
+}
+
+.detalle table{
+    border-collapse: collapse;
+    border-spacing: 0;
+    box-shadow: 10px 10px 14px 2px rgba(0,0,0,0.47);
+    font-family: "calibri", Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 20px;
+    color: gainsboro;
+    width: 700px;
+    text-align: left;
+    background-color: rgba(0, 0, 0, 0.65);
+}
+
+.detalle tr{
+    transition: background-color 1s;
+}
+
+.detalle tr:hover{
+    background-color: rgba(0, 0, 0, 0.8);
+    transition: background-color 1s;
+}
+
+.detalle th, td{
+    padding: 20px;
+}
+
+.detalle p a{
+    font-weight: 800;
+    text-decoration: none;
+    color: gainsboro;
+    transition: color 0.4s;
+}
+
+.detalle a:hover{
+    color: rgb(175, 175, 175);
+}
+
+/*FORMATO DE LA VISUALIZACION DE LOS FORMULARIOS*/
+.acciones{
+    padding: 15px;
+    width: 700px;
+    margin: auto;
+    margin-top: 15px;
+    background-color: rgba(0, 0, 0, .65);
+    color: gainsboro;
+    font-family: "calibri", Verdana, Geneva, Tahoma, sans-serif;
+    box-shadow: 10px 10px 14px 2px rgba(0,0,0,0.47);
+}
+
+.formularios{
+    padding-left: 80px;
+}
+
+.formularios li{
+    list-style: none;
+    padding: 10px;
+    display: block;
+}
+
+.formularios label{
+	padding-bottom:10px;
+	display:block;
+	font-weight: bold;
+    margin: auto;
+}
+
+input[type=text], 
+.formularios input[type=date],
+.formularios input[type=number],
+.formularios input[type=email],
+.formularios input[type=password],
+textarea, 
+select{
+    width: 500px;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	border:1px solid #BEBEBE;
+	padding: 7px;
+	margin:0px;
+	-webkit-transition: all 0.30s ease-in-out;
+	-moz-transition: all 0.30s ease-in-out;
+	-ms-transition: all 0.30s ease-in-out;
+	-o-transition: all 0.30s ease-in-out;
+	outline: none;	
+    position: relative;
+}
+
+textarea{
+    resize:none;
+    overflow: scroll;
+}
+
+input[type=text]:focus, 
+.formularios input[type=date]:focus,
+.formularios input[type=number]:focus,
+.formularios input[type=email]:focus,
+.formularios input[type=password]:focus,
+.formularios textarea:focus, 
+.formularios select:focus{
+	-moz-box-shadow: 0 0 8px #88D5E9;
+	-webkit-box-shadow: 0 0 8px #88D5E9;
+	box-shadow: 0 0 8px #88D5E9;
+	border: 1px solid #88D5E9;
+}
+
+.formularios i {
+    height: 20px;
+    width: 25px;
+    margin-top: 7px;
+    position: absolute;
+    right: 400px;
+    opacity: 0;
+}
+
+.formularios .formulario_correcto i {
+    color: #42ab49;
+    opacity: 1;
+}
+
+.formularios .formulario_incorrecto label {
+    color: #d1052a;
+}
+
+.formularios .formulario_incorrecto i {
+    color: #d1052a;
+    opacity: 1;
+    margin-top: 10px;
+}
+
+.formularios .formulario_incorrecto input {
+    border: 3px solid #d1052a;
+}
+
+.formularios .formulario_incorrecto select {
+    border: 3px solid #d1052a;
+}
+
+form p{
+    width: 500px;
+    margin-left: 80px;
+    text-align: center;
+    padding: 10px;
+}
+
+/*AVISO DE FORMULARIOS*/
+.aviso{
+    color: rgb(231, 65, 65);
+}
+
+.autenticacion a {
+    color: gainsboro;
+    text-decoration: underline;
+    transition: color 1s;
+}
+
+.autenticacion a:hover {
+    color: rgb(177, 177, 177);
+}
+
+.formularios .required{
+    color: rgb(231, 65, 65);
+    float: right;
+    padding-right: 100px;
+}
+
+input[type=submit]{
+    margin-top: 10px;
+    margin-left: 180px;
+    width: 300px;
+	background: none;
+	padding: 8px 15px 8px 15px;
+	border: none;
+	color: white;
+    transition: background 1s;
+}
+
+input[type=submit]:hover{
+    background: rgba(0, 0, 0, .65);
+}
+
+/*FORMULARIO BUSQUEDA*/
+.busqueda {
+    padding: 5px;
+    padding-left: 10px;
+    margin: auto;
+}
+
+.input {
+    text-align: left;
+    height: 35px;
+}
+
+.boton {
+    padding: 5px;
+    padding-bottom: 7px;
+    border-radius: 5px;
+}
+
+.boton img {
+    height: 17px;
+    width: 20px;
+    display: block;
+    margin: auto;
+}
+
+#textoNoResultado {
+    text-align: left;
+    margin-left: 20px;
+}
