@@ -1,26 +1,25 @@
 from sre_constants import SUCCESS
-from django.shortcuts import get_list_or_404, redirect, render
+from django.shortcuts import get_list_or_404, get_object_or_404, redirect, render
 from django.views import View
 from django.urls import reverse_lazy
 from .forms import *
 from .models import *
-from django.conf import settings
 from django.views.generic.edit import DeleteView, UpdateView
 
 # Create your views here.
 def inicio(request):
-    componente = get_list_or_404(Componente.objects.order_by('componente_nombre'));
-    producto = get_list_or_404(Producto.objects.order_by('producto_nombre'));
-    cliente = get_list_or_404(Cliente.objects.order_by('cliente_nombreEmpresa'));
-    pedido = get_list_or_404(Pedido.objects.order_by('pedido_referencia'));
+    componente = get_list_or_404(Componente);
+    producto = get_list_or_404(Producto);
+    cliente = get_list_or_404(Cliente);
+    pedido = get_list_or_404(Pedido);
     
     context = {
         'componentes': componente,
         'productos': producto,
         'clientes': cliente,
-        'pedidos': pedido,
+        'pedidos': pedido
     }
-    return render(request, 'pagPrincipal.html', context)
+    return render(request, "pagPrincipal.html", context)
 
 # -- VISTAS DE AÑADIR --  # 
 
@@ -37,7 +36,6 @@ class anyadirClienteView(View):
             return redirect('base')
         return render(request, 'anyaadir_cliente.html', {'form': form})
 
-# AÑADIR PRODUCTO #
 class anyadirProductoView(View):
     def get(self, request, *args, **kwargs):
         form = ProductoForm()
@@ -50,8 +48,6 @@ class anyadirProductoView(View):
             return redirect('base')
         return render(request, 'anyadir_producto.html', {'form': form})
     
-
-# AÑADIR COMPONENTE #
 class anyadirComponenteView(View):
     def get(self, request, *args, **kwargs):
         form = ComponenteForm()
@@ -64,7 +60,6 @@ class anyadirComponenteView(View):
             return redirect('base')
         return render(request, 'anyaadir_componente.html', {'form': form})
     
-# AÑADIR PEDIDO #
 class anyadirPedidoView(View):
     def get(self, request, *args, **kwargs):
         form = PedidoForm()
@@ -104,31 +99,25 @@ class anyadirPedidoView(View):
 # -- VISTAS DE VER --  #
 
 # VER PEDIDO #
-class detallePedidoView(View):
-    model = Pedido
-    template_name = 'detallePedido.html'
-    context_object_name = 'pedido'
+def detallePedidoView(request, pedido_id):
+    pedido = get_object_or_404(Pedido, pk=pedido_id)
+    return render(request, 'detallePedido.html', {'pedido': pedido})
 
-
-# VER COMPONENTE #
 class detalleComponenteView(View):
     model = Componente
     template_name = 'detalleComponente.html'
     context_object_name = 'componente'
     
-# VER CLIENTE #
 class detalleClienteView(View):
     model = Cliente
     template_name = 'detalleCliente.html'
     context_object_name = 'cliente'
 
-# VER PRODUCTO #
 class detalleProductoView(View):
     model = Producto
     template_name = 'detalleProducto.html'
     context_object_name = 'producto'
 
-# VER PEDIDO CLIENTE #
 '''class VerPedidoClienteView(View):
      def get(self, request, *args, **kwargs):
             Pedido = get_list_or_404(Producto.objects.order_by('producto_referencia'))
@@ -167,26 +156,26 @@ class eliminarPedidoView(DeleteView):
     template_name = 'borrarPedido.html'
     success_url = reverse_lazy('base')
     
-class updateProductoView(UpdateView):
+class modificarProductoView(UpdateView):
         model = Producto
-        template_name = 'updateProducto.html'
-        fields = ['producto_nombre', 'producto_descripcion', 'producto_categoria', 'producto_precio', 'producto_pdf']
+        template_name = 'modificarProducto.html'
+        fields = ['nombre', 'descripcion', 'categoria', 'precio', 'pdf']
         success_url = reverse_lazy('listaProducto')
 
-class updateComponenteView(UpdateView):
+class modificarComponenteView(UpdateView):
         model = Componente
-        template_name = 'updateComponente.html'
-        fields = ['componente_nombre', 'componente_descripcion', 'componente_categoria', 'componente_precio', 'componente_pdf']
+        template_name = 'modificarComponente.html'
+        fields = ['nombre', 'descripcion', 'categoria', 'precio', 'pdf']
         success_url = reverse_lazy('listaComponente')
         
-class updateClienteView(UpdateView):
+class modificarClienteView(UpdateView):
         model = Cliente
-        template_name = 'updateCliente.html'
-        fields = ['cliente_nombre', 'cliente_apellidos', 'cliente_direccion', 'cliente_telefono', 'cliente_email']
+        template_name = 'modificarCliente.html'
+        fields = ['nombre', 'apellidos', 'direccion', 'telefono', 'email']
         success_url = reverse_lazy('listaCliente')
         
-class updatePedidoView(UpdateView):
+class modificarPedidoView(UpdateView):
         model = Pedido
-        template_name = 'updatePedido.html'
-        fields = ['pedido_referencia', 'pedido_fecha', 'pedido_cliente', 'pedido_producto', 'pedido_componente']
+        template_name = 'modificarPedido.html'
+        fields = ['referencia', 'fecha', 'cliente', 'producto', 'componente']
         success_url = reverse_lazy('listaPedido')

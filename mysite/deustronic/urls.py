@@ -1,37 +1,29 @@
-"""mysite URL Configuration
-
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/2.2/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
-from django.contrib import admin
-from django.urls import path, include
+from django.urls import path
 from . import views
-
+from deustronic.views import *
 urlpatterns = [
     path('inicio', views.inicio, name='base'),
-    path('anyadirPedidoProducto', views.anyadirPedidoView.as_view, name='anyadirPedidoProducto'),
-    path('anyadirComponenteProducto', views.anyadirComponenteProductoView.as_view, name='anyadirComponenteProducto'),
-    path('anyadirProducto', views.anyadirProductoView.as_view, name='anyadirProducto'),
-    path('anyadirPedido', views.anyadirPedidoView.as_view, name='anyadirPedido'),
-    path('anyadirComponente', views.anyadirComponenteView.as_view, name='anyadirComponente'),
-    path('anyadirCliente', views.anyadirClienteView.as_view, name='anyadirCliente'),
-    path('detalleProducto/<int:pk>/', views.detalleProductoView.as_view(), name='detalleProducto'),
-    path('detalleCliente/<int:pk>/', views.detalleClienteView.as_view(), name='detalleCliente'),
-    path('detalleProducto/<int:pk>/', views.detalleComponenteView.as_view(), name='detalleComponente'),
-    path('detalleProducto/<int:pk>/', views.detallePedidoView.as_view(), name='detallePedido'),
-    path('eliminarPedido/<int:pk>/', views.eliminarPedidoView.as_view(), name='eliminarPedido'),
-    path('eliminarComponente/<int:pk>/', views.eliminarComponenteView.as_view(), name='eliminarComponente'),
-    path('eliminarProducto/<int:pk>/', views.eliminarProductoView.as_view(), name='eliminarProducto'),
-    path('eliminarCliente/<int:pk>/', views.eliminarClienteView.as_view(), name='eliminarCliente'),
+    
+    path('anyadirPedidoProducto', anyadirPedidoView.as_view, name='anyadirPedidoProducto'),
+    path('anyadirComponenteProducto', anyadirComponenteProductoView.as_view, name='anyadirComponenteProducto'),
+    path('anyadirProducto', anyadirProductoView.as_view, name='anyadirProducto'),
+    path('anyadirPedido', anyadirPedidoView.as_view, name='anyadirPedido'),
+    path('anyadirComponente', anyadirComponenteView.as_view, name='anyadirComponente'),
+    path('anyadirCliente', anyadirClienteView.as_view, name='anyadirCliente'),
+    
+    path('detalleProducto/<int:pk>/', detalleProductoView.as_view(), name='detalleProducto'),
+    path('detallePedido/<int:pedido_id>/', detallePedidoView, name='detallePedido'),
+    path('detalleCliente/<int:pk>/', detalleClienteView.as_view(), name='detalleCliente'),
+    path('detalleComponente/<int:pk>/', detalleComponenteView.as_view(), name='detalleComponente'),
+    
+    path('modificarProducto/<int:producto_pk>/', modificarProductoView.as_view(), name='modificarProducto'),
+    path('modificarPedido/<int:pk>/', modificarPedidoView.as_view(), name='modificarPedido'),
+    path('modificarComponente/<int:pk>/', modificarComponenteView.as_view(), name='modificarComponente'),
+    path('modificarCliente/<int:pk>/', modificarClienteView.as_view(), name='modificarCliente'),
+    
+    path('eliminarProducto/<int:producto_id>/', eliminarProductoView.as_view(), name='eliminarProducto'),
+    path('eliminarPedido/<int:pk>/', eliminarPedidoView.as_view(), name='eliminarPedido'),
+    path('eliminarComponente/<int:pk>/', eliminarComponenteView.as_view(), name='eliminarComponente'),
+    path('eliminarCliente/<int:pk>/', eliminarClienteView.as_view(), name='eliminarCliente'),
     
 ]
