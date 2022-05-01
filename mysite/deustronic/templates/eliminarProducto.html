@@ -10,11 +10,16 @@
     </header>
 
     <div class = "formularios">
-        <!--Formulario para eliminar un producto existente mediante el metodo post. La accion se desarrolla mediante el id del producto.-->
-        <form class="acciones" method="POST" action=".">
-            {% csrf_token %}
-            <p>Está seguro que desea eliminar: {{ producto.nombre }}?</p>
-            <input type="submit" value="Eliminar">
+        <h3> ¿Estás seguro de que quieres borrar el cliente  {{producto.nombre}}? </h3>
+        <form action="{% url 'eliminarProducto' producto.id %}" method="post">
+           {% csrf_token %}
+            <input type="submit" value="Borrar" class="borrarseguro">
         </form>
     </div>
+    
+    <!-- Botón para volver a la pagina de empleados -->  
+    <form action="{% url 'detalleProducto' %}">
+        {% csrf_token %}
+        <input type="submit" value="Volver atrás" class="boton_atras"> </input>
+    </form>
 {% endblock %}

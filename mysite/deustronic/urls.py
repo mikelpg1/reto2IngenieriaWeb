@@ -1,14 +1,13 @@
 from django.urls import path
 from . import views
 from deustronic.views import *
+
 urlpatterns = [
     path('inicio', views.inicio, name='base'),
     
-    path('anyadirPedidoProducto', anyadirPedidoView.as_view, name='anyadirPedidoProducto'),
-    path('anyadirComponenteProducto', anyadirComponenteProductoView.as_view, name='anyadirComponenteProducto'),
+    path('anyadirPedidoProducto', anyadirPedidoView.as_view, name='anyadirPedido'),
+    path('anyadirComponenteProducto', anyadirComponenteProductoView.as_view, name='anyadirComponente'),
     path('anyadirProducto', anyadirProductoView.as_view, name='anyadirProducto'),
-    path('anyadirPedido', anyadirPedidoView.as_view, name='anyadirPedido'),
-    path('anyadirComponente', anyadirComponenteView.as_view, name='anyadirComponente'),
     path('anyadirCliente', anyadirClienteView.as_view, name='anyadirCliente'),
     
     path('detalleProducto/<int:pk>/', detalleProductoView.as_view(), name='detalleProducto'),

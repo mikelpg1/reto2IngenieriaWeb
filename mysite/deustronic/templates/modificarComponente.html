@@ -1,28 +1,43 @@
-<!--Heredamos todos los elementos de base.html-->
-{% extends "base.html" %} 
-{% load static %}
+{% extends "base.html" %}
 
-<!--Bloque content, que varia dependiendo el html.-->
-{% block content %}
-    <header>
-        <h2 class="pagSecundarias">MODIFICAR COMPONENTE: {{ componente.nombre }}</h2>
-        <hr>
-    </header>
+    {% block title %} {{componentes.nombre}} {% endblock %}
+    {% block contenido %}
+    <div class="titulo"> 
+        <h2> {{componentes.apellidos}}, {{componentes.nombre}} </h2>
+     </div>
+    
+    <!-- Caja donde se muestran los datos del cliente -->
+    <div class="caja_datos">
+        <p> <span class="datos"> ID_componentes: </span> {{componentes.id}} </p>
+        <p> <span class="datos"> UNIDADES: </span> {{componentes.unidades}} </p>
+        <p> <span class="datos"> DESCRIPCION: </span> {{componentes.descripcion}} </span></p>
+    </div>
+    <!-- lista de proyectos
+    <div class="caja_datos">
+    <h3>Proyectos en los que trabaja: </h3> 
+    <p>Debugging 1</p>
+    {% if componentes.proyecto_set %}
+    <p>Debugging 2</p> 
+            <ol>
+                {% for proyectos in componentes.proyecto_set.all %}
+                
+                <li> <a href="/myapp3/proyectos/{{proyectos.id}}"> {{proyectos.nombre}} </a> </li>
+                {% endfor %}
+            </ol>
 
-    <!--Formulario para modificar un componente existente mediante el metodo post.-->
-    <form class="acciones" method="POST" action=".">
-        {% csrf_token %}
-        <!--Cargamos los campos del formulario desde UpdateView, los cuales deben estar rellenados-->
-        <ul class="formularios">
-            <li>
-                <label for="id_nombre">Nombre <span class="required">*</span></label>
-                {{ form.nombre }}
-            </li>
-            <li>
-                <label for="id_marca">Marca <span class="required">*</span></label>
-                {{ form.marca }} 
-            </li>
-        </ul>
-        <input type="submit" value="Actualizar">
+        {% else %}
+        <p> No hay proyectos en los que trabaje </p>
+
+        {% endif %}
+    
+    </div>
+    -->
+    <!-- Botón de borrar cliente -->
+    <form  action="{% url 'eliminarComponentes' componentes.id %}"> <!--/myapp3/borrarEmpleado/{{empleado.id}} -->
+        <input type="submit" value="Eliminar componentes" class="borrar">
     </form>
-{% endblock %}
+    <!-- Botón de editar cliente -->
+    <form  action="{% url 'editarComponentes' componentes.id %}">
+        <input type="submit" value="Editar" class="editar">
+    </form>
+    {% endblock %}

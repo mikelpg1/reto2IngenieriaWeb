@@ -4,49 +4,29 @@
 
 <!--Bloque content, que varia dependiendo el html.-->
 {% block content %}
-    <header>
-        <h2 class="pagSecundarias">Detalle del pedido: {{detalle_pedido.fecha}}</h2>
-        <hr>
-    </header>
+    <div class="titulo"> 
+        <h2> {{titulo_pagina}} </h2> 
+    </div>
 
 
+    <!-- Lista de los componentes --> 
+    {% if lista_pedidos %}
+        <div class="caja_datos">
+            <ul>
+                {% for proyectos in lista_pedido %}        
+                <li>        
+                        <a href="/deustronic/pedido/{{pedido.id}}"> {{pedido.nombre}} </a>
+                </li>
+                {% endfor %}
+            </ul>
 
-    <!--Tabla con todos los atributos de un pedido específico-->
-    <div class="detalle">
-        <table id="texto">
-            <tr>
-                <th>Fecha del pedido</th>
-                <td>{{ detalle_pedido.fecha }}</td>
-            </tr>
-            <tr>
-                <th>Precio total</th>
-                <td>{{ detalle_pedido.precioTotal }}€</td>
-            </tr>
-            <tr>
-                <th>Nombre del cliente</th>
-                <td>{{ detalle_pedido.cliente }}</td>
-            </tr>
-            <tr>
-                <th>Listado de productos</th>
-                <td>
-                    <!--Comprobamos si existen productos asignados al pedido en nuestra BBDD-->
-                    {% if detalle_pedido.compone_set.all %}
-                        <ul>
-                            <!--Recorremos todos los productos asignados y los visualizamos como una lista no ordenada <ul>-->
-                            {% for productos in detalle_pedido.compone_set.all %}
-                                <li>{{productos.producto}} cant.:{{productos.cantidad}}</li>
-                            {% endfor %}
-                        </ul>
-                    <!--Sacamos un aviso de que no existen productos asignados en caso de no encontrarlos-->
-                    {% else %}
-                        <h4>No se han asignado productos para este pedido</h4>
-                        {% if perms.appGestionDePedidos.add_compone %}
-                            <p>Para asignar un producto haga click <a href="{% url 'anyadirPedidoProducto' %}">aquí</a></p>
-                        {% endif %}
-                    {% endif %}
+    {% else %}
+        <p> No hay pedidos </p>
+    {% endif %}
                 </td>
             </tr>
         </table>
     </div>
+
 
 {% endblock %}

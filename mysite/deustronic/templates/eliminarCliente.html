@@ -10,11 +10,16 @@
     </header>
 
     <div class = "formularios">
-        <!--Formulario para eliminar un cliente existente mediante el metodo post. La accion se desarrolla mediante el id del cliente.-->
-        <form class="acciones" method="POST" action=".">
-            {% csrf_token %}
-            <p>Está seguro que desea eliminar: {{ cliente.nombre }}?</p>
-            <input type="submit" value="Eliminar">
+        <h3> ¿Estás seguro de que quieres borrar el cliente {{cliente.apellidos}}, {{cliente.nombre}}? </h3>
+        <form action="{% url 'eliminarCliente' cliente.id %}" method="post">
+           {% csrf_token %}
+            <input type="submit" value="Borrar" class="borrarseguro">
         </form>
     </div>
+    
+    <!-- Botón para volver a la pagina de empleados -->  
+    <form action="{% url 'detalleCliente' %}">
+        {% csrf_token %}
+        <input type="submit" value="Volver atrás" class="boton_atras"> </input>
+    </form>
 {% endblock %}

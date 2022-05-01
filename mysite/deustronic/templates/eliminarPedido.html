@@ -5,16 +5,21 @@
 <!--Bloque content, que varia dependiendo el html.-->
 {% block content %}
     <header>
-        <h2 class="pagSecundarias">ELIMINAR PEDIDO: {{ pedido.fecha }}</h2>
+        <h2 class="pagSecundarias">ELIMINAR PEDIDO: {{ Pedido.nombre }}</h2>
         <hr>
     </header>
 
     <div class = "formularios">
-        <!--Formulario para eliminar un pedido existente mediante el metodo post. La accion se desarrolla mediante el id del pedido.-->
-        <form class="acciones" method="POST" action=".">
-            {% csrf_token %}
-            <p>Está seguro que desea eliminar: {{ pedido.fecha }}?</p>
-            <input type="submit" value="Eliminar">
+        <h3> ¿Estás seguro de que quieres borrar el cliente {{Pedido.nombre}}? </h3>
+        <form action="{% url 'eliminarPedido' pedido.id %}" method="post">
+           {% csrf_token %}
+            <input type="submit" value="Borrar" class="borrarseguro">
         </form>
     </div>
+    
+    <!-- Botón para volver a la pagina de empleados -->  
+    <form action="{% url 'detallePedido' %}">
+        {% csrf_token %}
+        <input type="submit" value="Volver atrás" class="boton_atras"> </input>
+    </form>
 {% endblock %}

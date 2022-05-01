@@ -20,38 +20,26 @@
                     <li><a href="">GESTIÓN DE PRODUCTOS</a>
                         <ul>
 
-                            {% if perms.appGestionDePedidos.add_producto %}
-                            <li><a href="{% url 'anyadirProducto' %}">AÑADIR PRODUCTO</a></li>
-                            {% endif %} {% if perms.appGestionDePedidos.add_compone %}
-                            <li><a href="{% url 'anyadirPedidoProducto' %}">ASIGNAR PEDIDO</a></li>
-                            {% endif %} {% if perms.appGestionDePedidos.add_consta %}
-                            <li><a href="{% url 'anyadirComponenteProducto' %}">ASIGNAR COMPONENTE</a></li>
-                            {% endif %}
+                            <li><a href="/templates/detalleProducto">PRODUCTO</a></li>
+
                         </ul>
                     </li>
                     <li><a href="">GESTIÓN DE PEDIDOS</a>
                         <ul>
-                            {% if perms.appGestionDePedidos.add_pedido %}
-                            <li><a href="{% url 'anyadirPedido' %}">AÑADIR PEDIDO</a></li>
-                            {% endif %} {% if perms.appGestionDePedidos.add_compone %}
-                            <li><a href="{% url 'anyadirPedidoProducto' %}">ASIGNAR PRODUCTO</a></li>
-                            {% endif %}
+                            <li><a href="/templates/detallePedido">PEDIDOS</a></li>
+
                         </ul>
                     </li>
                     <li><a href="">GESTIÓN DE COMPONENTES</a>
                         <ul>
-                            {% if perms.appGestionDePedidos.add_componente %}
-                            <li><a href="{% url 'anyadirComponente' %}">AÑADIR COMPONENTE</a></li>
-                            {% endif %} {% if perms.appGestionDePedidos.add_consta %}
-                            <li><a href="{% url 'anyadirComponenteProducto' %}">ASIGNAR PRODUCTO</a></li>
-                            {% endif %}
+                            <li><a href="/templates/detalleComponente">COMPONENTES</a></li>
+
                         </ul>
                     </li>
                     <li><a href="">GESTIÓN DE CLIENTES</a>
                         <ul>
-                            {% if perms.appGestionDePedidos.add_cliente %}
-                            <li><a href="{% url 'anyadirCliente' %}">AÑADIR CLIENTE</a></li>
-                            {% endif %}
+                            <li><a href="/templates/detalleCliente">CLIENTES</a></li>
+
                         </ul>
                     </li>
                 </ul>

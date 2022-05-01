@@ -1,40 +1,46 @@
-<!--Heredamos todos los elementos de base.html-->
-{% extends "base.html" %} 
-{% load static %}
+{% extends "base.html" %}
 
-<!--Bloque content, que varia dependiendo el html.-->
-{% block content %}
-    <header>
-        <h2 class="pagSecundarias">MODIFICAR CLIENTE: {{ cliente.nombre }}</h2>
-        <hr>
-    </header>
+    {% block title %} {{cliente.nombre}} {% endblock %}
+    {% block contenido %}
+    <div class="titulo"> 
+        <h2> {{cliente.apellidos}}, {{cliente.nombre}} </h2>
+     </div>
+    
+    <!-- Caja donde se muestran los datos del cliente -->
+    <div class="caja_datos">
+        <p> <span class="datos"> ID_Cliente: </span> {{cliente.id}} </p>
+        <p> <span class="datos"> DNI: </span> {{cliente.DNI}} </p>
+        <p> <span class="datos"> Nombre: </span> <span id="empNombre"> {{cliente.nombre}} </span></p>
+        <p> <span class="datos"> Apellidos: </span> <span id="empApellido"> {{cliente.apellidos}} </span> </p>
+        <p> <span class="datos"> Email: </span>{{cliente.email}} </p>
+        <p> <span class="datos"> Teléfono: </span>{{cliente.telefono}} </p>
+    </div>
+    <!-- lista de proyectos
+    <div class="caja_datos">
+    <h3>Proyectos en los que trabaja: </h3> 
+    <p>Debugging 1</p>
+    {% if cliente.proyecto_set %}
+    <p>Debugging 2</p> 
+            <ol>
+                {% for proyectos in cliente.proyecto_set.all %}
+                
+                <li> <a href="/myapp3/proyectos/{{proyectos.id}}"> {{proyectos.nombre}} </a> </li>
+                {% endfor %}
+            </ol>
 
-    <!--Formulario para modificar un cliente existente mediante el metodo post.-->
-    <form class="acciones" method="POST" action=".">
-        {% csrf_token %}
-        <!--Cargamos los campos del formulario desde UpdateView, los cuales deben estar rellenados-->
-        <ul class="formularios">
-            <li>
-                <label for="id_cif">CIF <span class="required">*</span></label>
-                {{ form.cif }}
-            </li>
-            <li>
-                <label for="id_nombre">Nombre<span class="required">*</span></label>
-                {{ form.nombre }} 
-            </li>
-            <li>
-                <label for="id_telefono">Telefono <span class="required">*</span></label>
-                {{ form.telefono }} 
-            </li>
-            <li>
-                <label for="id_nombreEmpresa">Nombre de la empresa <span class="required">*</span></label>
-                {{ form.nombreEmpresa }} 
-            </li>
-            <li>
-                <label for="id_email">Email <span class="required">*</span></label>
-                {{ form.email }} 
-            </li>
-        </ul>
-        <input type="submit" value="Actualizar">
+        {% else %}
+        <p> No hay proyectos en los que trabaje </p>
+
+        {% endif %}
+    
+    </div>
+    -->
+    <!-- Botón de borrar cliente -->
+    <form  action="{% url 'eliminarCliente' cliente.id %}"> <!--/myapp3/borrarEmpleado/{{empleado.id}} -->
+        <input type="submit" value="Eliminar cliente" class="borrar">
     </form>
-{% endblock %}
+    <!-- Botón de editar cliente -->
+    <form  action="{% url 'editarCliente' cliente.id %}">
+        <input type="submit" value="Editar" class="editar">
+    </form>
+    {% endblock %}

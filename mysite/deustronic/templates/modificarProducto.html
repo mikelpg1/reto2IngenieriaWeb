@@ -1,41 +1,46 @@
-<!--Heredamos todos los elementos de base.html-->
-{% extends "base.html" %} 
-{% load static %}
+{% extends "base.html" %}
 
-<!--Bloque content, que varia dependiendo el html.-->
-{% block content %}
-    <header>
-        <h2 class="pagSecundarias">MODIFICAR PRODUCTO: {{ producto.nombre }}</h2>
-        <hr>
-    </header>
+    {% block title %} {{producto.nombre}} {% endblock %}
+    {% block contenido %}
+    <div class="titulo"> 
+        <h2>  {{producto.nombre}} </h2>
+     </div>
+    
+    <!-- Caja donde se muestran los datos del producto -->
+    <div class="caja_datos">
+        <p> <span class="datos"> ID_producto: </span> {{producto.id}} </p>
+        <p> <span class="datos"> NOMBRE: </span> {{producto.fecha}} </p>
+        <p> <span class="datos"> DESCRIPCION: </span> {{producto.descripcion}} </span></p>
+        <p> <span class="datos"> CATEGORIA: </span> {{producto.descripcion}} </span></p>
+        <p> <span class="datos"> PRECIO: </span> {{producto.descripcion}} </span></p>
 
-    <!--Formulario para modificar un producto existente mediante el metodo post.-->
-    <form class="acciones" method="POST" action=".">
-        {% csrf_token %}
-        <!--Cargamos los campos del formulario desde UpdateView, los cuales deben estar rellenados-->
-        <ul class="formularios">
-            <li>
-                <label for="id_nombre">Nombre <span class="required">*</span></label>
-                {{ form.nombre }}
-            </li>
-            <li>
-                <label for="id_precio">Precio <span class="required">*</span></label>
-                {{ form.precio }} 
-            </li>
-            <li>
-                <label for="id_categoria">Categoria <span class="required">*</span></label>
-                {{ form.categoria }} 
-            </li>
-            <li>
-                <label for="id_descripcion">Descripción <span class="required">*</span></label>
-                {{ form.descripcion }}
-            </li>
-            <li>
-                <label for="id_componentes">Componentes <span class="required">*</span></label>
-                {{ form.componentes }}
-            </li>
-        </ul>
+    </div>
+    <!-- lista de proyectos
+    <div class="caja_datos">
+    <h3>Proyectos en los que trabaja: </h3> 
+    <p>Debugging 1</p>
+    {% if componentes.proyecto_set %}
+    <p>Debugging 2</p> 
+            <ol>
+                {% for proyectos in componentes.proyecto_set.all %}
+                
+                <li> <a href="/myapp3/proyectos/{{proyectos.id}}"> {{proyectos.nombre}} </a> </li>
+                {% endfor %}
+            </ol>
 
-        <input type="submit" value="Guardar">
+        {% else %}
+        <p> No hay proyectos en los que trabaje </p>
+
+        {% endif %}
+    
+    </div>
+    -->
+    <!-- Botón de borrar producto -->
+    <form  action="{% url 'eliminarProducto' producto.id %}"> <!--/myapp3/borrarEmpleado/{{empleado.id}} -->
+        <input type="submit" value="Eliminar producto" class="borrar">
     </form>
-{% endblock %}
+    <!-- Botón de editar producto -->
+    <form  action="{% url 'editarProducto' producto.id %}">
+        <input type="submit" value="Editar" class="editar">
+    </form>
+    {% endblock %}

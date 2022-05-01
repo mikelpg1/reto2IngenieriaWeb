@@ -1,32 +1,43 @@
-<!--Heredamos todos los elementos de base.html-->
-{% extends "base.html" %} 
-{% load static %}
+{% extends "base.html" %}
 
-<!--Bloque content, que varia dependiendo el html.-->
-{% block content %}
-    <header>
-        <h2 class="pagSecundarias">MODIFICAR PEDIDO: {{ pedido.fecha }}</h2>
-        <hr>
-    </header>
+    {% block title %} {{pedido.nombre}} {% endblock %}
+    {% block contenido %}
+    <div class="titulo"> 
+        <h2>  {{pedido.nombre}} </h2>
+     </div>
+    
+    <!-- Caja donde se muestran los datos del pedido -->
+    <div class="caja_datos">
+        <p> <span class="datos"> ID_pedido: </span> {{pedido.id}} </p>
+        <p> <span class="datos"> FECHA: </span> {{pedido.fecha}} </p>
+        <p> <span class="datos"> DESCRIPCION: </span> {{pedido.descripcion}} </span></p>
+    </div>
+    <!-- lista de proyectos
+    <div class="caja_datos">
+    <h3>Proyectos en los que trabaja: </h3> 
+    <p>Debugging 1</p>
+    {% if componentes.proyecto_set %}
+    <p>Debugging 2</p> 
+            <ol>
+                {% for proyectos in componentes.proyecto_set.all %}
+                
+                <li> <a href="/myapp3/proyectos/{{proyectos.id}}"> {{proyectos.nombre}} </a> </li>
+                {% endfor %}
+            </ol>
 
-    <!--Formulario para modificar un pedido existente mediante el metodo post.-->
-    <form class="acciones" method="POST" action=".">
-        {% csrf_token %}
-        <!--Cargamos los campos del formulario desde UpdateView, los cuales deben estar rellenados-->
-        <ul class="formularios">
-            <li>
-                <label for="id_Fecha">Fecha (año-mes-día) <span class="required">*</span></label>
-                {{ form.fecha }}
-            </li>
-            <li>
-                <label for="id_precioTotal">Precio Total<span class="required">*</span></label>
-                {{ form.precioTotal }} 
-            </li>
-            <li>
-                <label for="id_cliente">Cliente <span class="required">*</span></label>
-                {{ form.cliente }} 
-            </li>
-        </ul>
-        <input type="submit" value="Actualizar">
+        {% else %}
+        <p> No hay proyectos en los que trabaje </p>
+
+        {% endif %}
+    
+    </div>
+    -->
+    <!-- Botón de borrar pedido -->
+    <form  action="{% url 'eliminarPedido' pedido.id %}"> <!--/myapp3/borrarEmpleado/{{empleado.id}} -->
+        <input type="submit" value="Eliminar pedido" class="borrar">
     </form>
-{% endblock %}
+    <!-- Botón de editar pedido -->
+    <form  action="{% url 'editarPedido' pedido.id %}">
+        <input type="submit" value="Editar" class="editar">
+    </form>
+    {% endblock %}

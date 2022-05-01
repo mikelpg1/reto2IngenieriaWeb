@@ -14,13 +14,19 @@
         {% csrf_token %}
         <!--Cargamos los campos del formulario indicados en el metodo get dentro de nuestra vista-->
         <ul class="formularios">
+
             <li>
-                <label for="id_nombre">Nombre <span class="required">*</span></label>
-                {{ form.nombre }}
+                <label for="id_componentes">ID_COMPONENTES <span class="required">*</span></label>
+                {{ form.componentes }}
+            </li>
+
+            <li>
+                <label for="id_unidades">Unidades <span class="required">*</span></label>
+                {{ form.unidades }} 
             </li>
             <li>
-                <label for="id_marca">Marca <span class="required">*</span></label>
-                {{ form.marca }} 
+                <label for="id_descripcion">Descripción <span class="required">*</span></label>
+                {{ form.descripcion }}
             </li>
         </ul>
 

@@ -34,7 +34,7 @@ class anyadirClienteView(View):
         if form.is_valid():
             form.save()
             return redirect('base')
-        return render(request, 'anyaadir_cliente.html', {'form': form})
+        return render(request, 'anyadir_cliente.html', {'form': form})
 
 class anyadirProductoView(View):
     def get(self, request, *args, **kwargs):
