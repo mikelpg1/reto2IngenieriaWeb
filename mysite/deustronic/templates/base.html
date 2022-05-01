@@ -1,6 +1,6 @@
-<!DOCTYPE html>
-{% load static %}
+<!DOCTYPE html> {% load static %}
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,6 +8,7 @@
     <!-- enlace de archivo CSS-->
     <link rel="stylesheet" href="{% static 'CSS/style.css' %}?{% now 'U' %}">
 </head>
+
 <body>
     <header>
         <!--BARRA DE NAVEGACION-->
@@ -16,44 +17,40 @@
                 <img src="{% static 'IMG/DEUSTO.png' %}" alt="Logo" width="150px">
                 <ul>
                     <li><a href="{% url 'base' %}">PÁGINA PRINCIPAL</a></li>
-                    <li><a href="">GESTIÓN DE PRODUCTOS</a> 
+                    <li><a href="">GESTIÓN DE PRODUCTOS</a>
                         <ul>
-                            
+
                             {% if perms.appGestionDePedidos.add_producto %}
-                                <li><a href="{% url 'anyadirProducto' %}">AÑADIR PRODUCTO</a></li>
-                            {% endif %}
-                            {% if perms.appGestionDePedidos.add_compone %}
-                                <li><a href="{% url 'anyadirPedidoProducto' %}">ASIGNAR PEDIDO</a></li>
-                            {% endif %}
-                            {% if perms.appGestionDePedidos.add_consta %}
-                                <li><a href="{% url 'anyadirComponenteProducto' %}">ASIGNAR COMPONENTE</a></li>
+                            <li><a href="{% url 'anyadirProducto' %}">AÑADIR PRODUCTO</a></li>
+                            {% endif %} {% if perms.appGestionDePedidos.add_compone %}
+                            <li><a href="{% url 'anyadirPedidoProducto' %}">ASIGNAR PEDIDO</a></li>
+                            {% endif %} {% if perms.appGestionDePedidos.add_consta %}
+                            <li><a href="{% url 'anyadirComponenteProducto' %}">ASIGNAR COMPONENTE</a></li>
                             {% endif %}
                         </ul>
-                    </li> 
-                    <li><a href="">GESTIÓN DE PEDIDOS</a> 
+                    </li>
+                    <li><a href="">GESTIÓN DE PEDIDOS</a>
                         <ul>
                             {% if perms.appGestionDePedidos.add_pedido %}
-                                <li><a href="{% url 'anyadirPedido' %}">AÑADIR PEDIDO</a></li>
-                            {% endif %}
-                            {% if perms.appGestionDePedidos.add_compone %}
-                                <li><a href="{% url 'anyadirPedidoProducto' %}">ASIGNAR PRODUCTO</a></li>
+                            <li><a href="{% url 'anyadirPedido' %}">AÑADIR PEDIDO</a></li>
+                            {% endif %} {% if perms.appGestionDePedidos.add_compone %}
+                            <li><a href="{% url 'anyadirPedidoProducto' %}">ASIGNAR PRODUCTO</a></li>
                             {% endif %}
                         </ul>
-                    </li>  
-                    <li><a href="">GESTIÓN DE COMPONENTES</a> 
+                    </li>
+                    <li><a href="">GESTIÓN DE COMPONENTES</a>
                         <ul>
                             {% if perms.appGestionDePedidos.add_componente %}
-                                <li><a href="{% url 'anyadirComponente' %}">AÑADIR COMPONENTE</a></li>
+                            <li><a href="{% url 'anyadirComponente' %}">AÑADIR COMPONENTE</a></li>
+                            {% endif %} {% if perms.appGestionDePedidos.add_consta %}
+                            <li><a href="{% url 'anyadirComponenteProducto' %}">ASIGNAR PRODUCTO</a></li>
                             {% endif %}
-                            {% if perms.appGestionDePedidos.add_consta %}
-                                <li><a href="{% url 'anyadirComponenteProducto' %}">ASIGNAR PRODUCTO</a></li>
-                            {% endif %}   
                         </ul>
-                    </li>  
-                    <li><a href="">GESTIÓN DE CLIENTES</a> 
+                    </li>
+                    <li><a href="">GESTIÓN DE CLIENTES</a>
                         <ul>
                             {% if perms.appGestionDePedidos.add_cliente %}
-                                <li><a href="{% url 'anyadirCliente' %}">AÑADIR CLIENTE</a></li>
+                            <li><a href="{% url 'anyadirCliente' %}">AÑADIR CLIENTE</a></li>
                             {% endif %}
                         </ul>
                     </li>
@@ -61,7 +58,7 @@
             </nav>
         </div>
 
-        {% block tituloPrincipal %}{% endblock %}   
+        {% block tituloPrincipal %}{% endblock %}
     </header>
 
     <main>
@@ -76,7 +73,7 @@
             <!--INSTAGRAM-->
             <a href="https://www.instagram.com/?hl=es" title="Instagram"><img src="{% static 'IMG/instagram.png' %}" alt="Intagram" width="50px" height="50px"></a>
             <!--TWITTER-->
-            <a href="https://twitter.com/?lang=es" title="Twitter"><img src="{% static 'IMG/twitter.png' %}"alt="Twitter" width="50px" height="50px"></a>
+            <a href="https://twitter.com/?lang=es" title="Twitter"><img src="{% static 'IMG/twitter.png' %}" alt="Twitter" width="50px" height="50px"></a>
             <!--FACEBOOK-->
             <a href="https://es-es.facebook.com/" title="Facebook"><img src="{% static 'IMG/facebook.png' %}" alt="Facebook" width="50px" height="50px"></a>
             <!--LINKEDIN-->
@@ -86,5 +83,5 @@
 
     </footer>
 </body>
-</html>
 
+</html>
