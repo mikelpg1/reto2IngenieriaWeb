@@ -44,18 +44,18 @@
                         <!--Recorremos todos los productos existentes y los visualizamos como una lista no ordenada <ul>-->
                         {% for producto in productos %}
                             <li>
-                                <span>id.{{producto.id}}</span>{{producto.nombre}}
+                                <span>id.{{producto.referencia}}</span>
                                 <!--Solo se podrá visualizar si se tiene acceso-->
                                 {% if perms.appGestionDePedidos.view_producto %}
-                                    <a class="detalles" href="{% url 'detalleProducto' producto.id %}">detalles</a>
+                                    <a class="detalles" href="http://127.0.0.1:8000/deustronic/detalleProducto/{{producto.pk}}/">detalles</a>
                                 {% endif %}  
                                 <!--Solo se podrá visualizar si se tiene acceso-->
                                 {% if perms.appGestionDePedidos.delete_producto %}
-                                    <a class="eliminar" href="{% url 'eliminarProducto' producto.id %}">eliminar</a>
+                                    <a class="eliminar" href="http://127.0.0.1:8000/deustronic/eliminarProducto/{{producto.pk}}/">eliminar</a>
                                 {% endif %} 
                                 <!--Solo se podrá visualizar si se tiene acceso-->
                                 {% if perms.appGestionDePedidos.change_producto %}
-                                    <a class="modificar" href="{% url 'modificarProducto' producto.id %}">modificar</a>
+                                    <a class="modificar" href="http://127.0.0.1:8000/deustronic/modificarProducto/{{producto.pk}}/">modificar</a>
                                 {% endif %} 
                             </li>
                         {% endfor %}
@@ -69,7 +69,6 @@
                     {% endif %}
                 {% endif %}
             </div>
-            {% include "paginacion/paginacionProductos.html" %} 
         </article>
 
         <!--Segundo articulo donde se visualizara el listado de pedidos.-->
@@ -95,15 +94,15 @@
                                 <span>id.{{pedido.id}}</span>{{pedido.fecha}}
                                 <!--Solo se podrá visualizar si se tiene acceso-->
                                 {% if perms.appGestionDePedidos.view_pedido %}
-                                    <a class="detalles" href="{% url 'detallePedido' pedido.id %}">detalles</a>
+                                    <a class="detalles" href="http://127.0.0.1:8000/deustronic/detallePedido/{{pedido.pk}}/">detalles</a>
                                 {% endif %}
                                 <!--Solo se podrá visualizar si se tiene acceso-->
                                 {% if perms.appGestionDePedidos.delete_pedido %}
-                                    <a class="eliminar" href="{% url 'eliminarPedido' pedido.id %}">eliminar</a>
+                                    <a class="eliminar" href="http://127.0.0.1:8000/deustronic/eliminarPedido/{{pedido.pk}}/">eliminar</a>
                                 {% endif %}
                                 <!--Solo se podrá visualizar si se tiene acceso-->
                                 {% if perms.appGestionDePedidos.change_pedido %}
-                                    <a class="modificar" href="{% url 'modificarPedido' pedido.id %}">modificar</a>
+                                    <a class="modificar" href="http://127.0.0.1:8000/deustronic/modificarPedido/{{pedido.pk}}">modificar</a>
                                 {% endif %}
                             </li>
                         {% endfor %}
@@ -116,7 +115,6 @@
                     {% endif %}
                 {% endif %}
             </div>
-            {% include "paginacion/paginacionPedidos.html" %} 
         </article>
 
         <!--Tercer articulo donde se visualizara el listado de clientes.-->
@@ -142,15 +140,15 @@
                                 <span>id.{{cliente.id}}</span>{{cliente.nombre}}
                                 <!--Solo se podrá visualizar si se tiene acceso-->
                                 {% if perms.appGestionDePedidos.view_cliente %}
-                                    <a class="detalles" href="{% url 'detalleCliente' cliente.id %}">detalles</a>
+                                    <a class="detalles" href="http://127.0.0.1:8000/deustronic/detalleCliente/{{cliente.pk}}/">detalles</a>
                                 {% endif %}
                                 <!--Solo se podrá visualizar si se tiene acceso-->
                                 {% if perms.appGestionDePedidos.delete_cliente %}
-                                    <a class="eliminar" href="{% url 'eliminarCliente' cliente.id %}">eliminar</a>
+                                    <a class="eliminar" href="http://127.0.0.1:8000/deustronic/eliminarCliente/{{cliente.pk}}/">eliminar</a>
                                 {% endif %}
                                 <!--Solo se podrá visualizar si se tiene acceso-->
                                 {% if perms.appGestionDePedidos.change_cliente %}
-                                    <a class="modificar" href="{% url 'modificarCliente' cliente.id %}">modificar</a>
+                                    <a class="modificar" href="http://127.0.0.1:8000/deustronic/modificarCliente/{{cliente.pk}}">modificar</a>
                                 {% endif %}
                             </li>
                         {% endfor %}
@@ -164,7 +162,6 @@
                     {% endif %}
                 {% endif %}
             </div>
-            {% include "paginacion/paginacionClientes.html" %} 
         </article>
 
         <!--Cuarto y ultimo articulo donde se visualizara el listado de componentes-->
@@ -190,15 +187,15 @@
                                 <span>id.{{componente.id}}</span>{{componente.nombre}}
                                 <!--Solo se podrá visualizar si se tiene acceso-->
                                 {% if perms.appGestionDePedidos.view_componente %}
-                                    <a class="detalles" href="{% url 'detalleComponente' componente.id %}">detalles</a>
+                                    <a class="detalles" href="http://127.0.0.1:8000/deustronic/detalleComponente/{{componente.pk}}">detalles</a>
                                 {% endif %}
                                 <!--Solo se podrá visualizar si se tiene acceso-->
                                 {% if perms.appGestionDePedidos.delete_componente %}
-                                    <a class="eliminar" href="{% url 'eliminarComponente' componente.id %}">eliminar</a>
+                                    <a class="eliminar" href="http://127.0.0.1:8000/deustronic/eliminarComponente/{{componente.pk}}">eliminar</a>
                                 {% endif %}
                                 <!--Solo se podrá visualizar si se tiene acceso-->
                                 {% if perms.appGestionDePedidos.change_componente %}
-                                    <a class="modificar" href="{% url 'modificarComponente' componente.id %}">modificar</a>
+                                    <a class="modificar" href="http://127.0.0.1:8000/deustronic/modificarComponente/{{componente.pk}}">modificar</a>
                                 {% endif %}
                             </li>
                         {% endfor %}
@@ -211,7 +208,6 @@
                     {% endif %}
                 {% endif %}
             </div>
-            {% include "paginacion/paginacionComponentes.html" %} 
         </article>
     {% else %}
 

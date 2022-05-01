@@ -19,10 +19,19 @@ from . import views
 
 urlpatterns = [
     path('inicio', views.inicio, name='base'),
-    path('gestionPedidos', views.pedidos, name='pedidos'),
-    path('catalogo', views.catalogo, name='catalogo'),
-    path('contacto', views.contacto, name='contacto'),
-    path('singin', views.signin, name='signin'),
-    path('singup', views.singup, name='anyadirProducto'),
+    path('anyadirPedidoProducto', views.anyadirPedidoView.as_view, name='anyadirPedidoProducto'),
+    path('anyadirComponenteProducto', views.anyadirComponenteProductoView.as_view, name='anyadirComponenteProducto'),
+    path('anyadirProducto', views.anyadirProductoView.as_view, name='anyadirProducto'),
+    path('anyadirPedido', views.anyadirPedidoView.as_view, name='anyadirPedido'),
+    path('anyadirComponente', views.anyadirComponenteView.as_view, name='anyadirComponente'),
+    path('anyadirCliente', views.anyadirClienteView.as_view, name='anyadirCliente'),
+    path('detalleProducto/<int:pk>/', views.detalleProductoView.as_view(), name='detalleProducto'),
+    path('detalleCliente/<int:pk>/', views.detalleClienteView.as_view(), name='detalleCliente'),
+    path('detalleProducto/<int:pk>/', views.detalleComponenteView.as_view(), name='detalleComponente'),
+    path('detalleProducto/<int:pk>/', views.detallePedidoView.as_view(), name='detallePedido'),
+    path('eliminarPedido/<int:pk>/', views.eliminarPedidoView.as_view(), name='eliminarPedido'),
+    path('eliminarComponente/<int:pk>/', views.eliminarComponenteView.as_view(), name='eliminarComponente'),
+    path('eliminarProducto/<int:pk>/', views.eliminarProductoView.as_view(), name='eliminarProducto'),
+    path('eliminarCliente/<int:pk>/', views.eliminarClienteView.as_view(), name='eliminarCliente'),
     
 ]
