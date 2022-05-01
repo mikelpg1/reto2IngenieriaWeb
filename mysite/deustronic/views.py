@@ -77,6 +77,7 @@ class anyadirPedidoView(View):
         return render(request, 'anyaadirPedido.html', {'form': form})
 
 # AÑADIR COMPONENTE PRODUCTO #
+
 class anyadirComponenteProductoView(View):
     def get(self, request, *args, **kwargs):
         form = ComponenteForm()
@@ -93,6 +94,7 @@ class anyadirComponenteProductoView(View):
 # -- VISTAS DE VER --  #
 
 # VER PEDIDO #
+
 def detallePedidoView(request, pedido_id):
     pedido = get_object_or_404(Pedido, pk=pedido_id)
     return render(request, 'detallePedido.html', {'pedido': pedido})
