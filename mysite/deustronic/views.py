@@ -76,14 +76,14 @@ class anyadirPedidoView(View):
 class anyadirComponenteProductoView(View):
     def get(self, request, *args, **kwargs):
         form = ComponenteForm()
-        return render(request, 'anyadir_componente_producto.html', {'form': form})
+        return render(request, 'anyadirComponenteProducto.html', {'form': form})
     
     def post(self, request, *args, **kwargs):
         form = ComponenteForm(request.POST)
         if form.is_valid():
             form.save()
             return redirect('base')
-        return render(request, 'anyaadir_componente_producto.html', {'form': form})
+        return render(request, 'anyadirComponenteProducto.html', {'form': form})
     
 # -- VISTAS DE VER --  #
 
