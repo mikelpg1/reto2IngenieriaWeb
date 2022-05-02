@@ -10,8 +10,7 @@
     </header>
 
     <!--Formulario para modificar un componente existente mediante el metodo post.-->
-    <form class="acciones" method="POST" action=".">
-        {% csrf_token %}
+    <form class="acciones" id="modificarComponente" method="POST">{% csrf_token %}
         <!--Cargamos los campos del formulario desde UpdateView, los cuales deben estar rellenados-->
         <ul class="formularios">
             <li>
@@ -23,6 +22,6 @@
                 {{ form.marca }} 
             </li>
         </ul>
-        <input type="submit" value="Actualizar">
     </form>
+    <button value= "submit" type="submit" form="modificarComponente" value="Update">Guardar</button>
 {% endblock %}

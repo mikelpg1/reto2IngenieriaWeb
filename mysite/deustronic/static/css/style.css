@@ -12,7 +12,7 @@
     position: fixed;
     z-index: 1;
     border-bottom: 2px solid rgb(241, 241, 241);
-    background-color: rgb(86, 85, 85);
+    background-color: rgb(23, 89, 175);
 }
 
 .menu{
@@ -85,7 +85,7 @@
     padding-bottom: 5px;
     min-width: 100px;
     /*Estetica*/
-    background-color:  rgb(109, 106, 106);;  
+    background-color:  rgb(106, 108, 109);;  
 }
 
 /*Condicion para que se haga visible la lista anidada*/

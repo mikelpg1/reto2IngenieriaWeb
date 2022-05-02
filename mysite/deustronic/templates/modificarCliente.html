@@ -10,31 +10,27 @@
     </header>
 
     <!--Formulario para modificar un cliente existente mediante el metodo post.-->
-    <form class="acciones" method="POST" action=".">
+    <form class="acciones" method="POST" id="modificarCliente" action=".">
         {% csrf_token %}
         <!--Cargamos los campos del formulario desde UpdateView, los cuales deben estar rellenados-->
         <ul class="formularios">
             <li>
                 <label for="id_cif">CIF <span class="required">*</span></label>
-                {{ form.cif }}
+                {{ form.CIF }}
             </li>
             <li>
-                <label for="id_nombre">Nombre<span class="required">*</span></label>
-                {{ form.nombre }} 
-            </li>
-            <li>
-                <label for="id_telefono">Telefono <span class="required">*</span></label>
-                {{ form.telefono }} 
-            </li>
-            <li>
-                <label for="id_nombreEmpresa">Nombre de la empresa <span class="required">*</span></label>
+                <label for="id_nombre">Nombre Empresa<span class="required">*</span></label>
                 {{ form.nombreEmpresa }} 
             </li>
             <li>
-                <label for="id_email">Email <span class="required">*</span></label>
-                {{ form.email }} 
+                <label for="id_direccion">Direccion <span class="required">*</span></label>
+                {{ form.direccion }} 
+            </li>
+            <li>
+                <label for="id_datosContacto">Datos de Contacto <span class="required">*</span></label>
+                {{ form.datosContacto }} 
             </li>
         </ul>
-        <input type="submit" value="Actualizar">
+        <button value= "submit" type="submit" form="modificarCliente" value="Update">Guardar</button>
     </form>
 {% endblock %}

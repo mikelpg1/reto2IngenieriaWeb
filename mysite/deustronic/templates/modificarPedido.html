@@ -10,23 +10,19 @@
     </header>
 
     <!--Formulario para modificar un pedido existente mediante el metodo post.-->
-    <form class="acciones" method="POST" action=".">
+    <form class="acciones" method="POST" id="modificarPedido" action=".">
         {% csrf_token %}
         <!--Cargamos los campos del formulario desde UpdateView, los cuales deben estar rellenados-->
         <ul class="formularios">
             <li>
-                <label for="id_Fecha">Fecha (año-mes-día) <span class="required">*</span></label>
-                {{ form.fecha }}
+                <label for="id_cantidadProducto">Cantidad Producto<span class="required">*</span></label>
+                {{ form.cantidadproducto }} 
             </li>
             <li>
                 <label for="id_precioTotal">Precio Total<span class="required">*</span></label>
                 {{ form.precioTotal }} 
             </li>
-            <li>
-                <label for="id_cliente">Cliente <span class="required">*</span></label>
-                {{ form.cliente }} 
-            </li>
+            <button value= "submit" type="submit" form="modificarPedido" value="Update">Guardar</button>
         </ul>
-        <input type="submit" value="Actualizar">
     </form>
 {% endblock %}

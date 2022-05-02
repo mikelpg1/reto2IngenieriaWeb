@@ -14,34 +14,39 @@
     <div class="detalle">
         <table id="texto">
             <tr>
-                <th>cif</th>
-                <td>{{ cliente.cif }}</td>
+                <th>CIF</th>
+                <td>{{ cliente.CIF }}</td>
             </tr>
             <tr>
-                <th>Nombre</th>
-                <td>{{ cliente.nombre }}</td>
-            </tr>
-            <tr>
-                <th>Telefono</th>
-                <td>{{ cliente.telefono }}</td>
-            </tr>
-            <tr>
-                <th>Nombre de la empresa</th>
+                <th>Nombre Empresa</th>
                 <td>{{ cliente.nombreEmpresa }}</td>
             </tr>
             <tr>
-                <th>Email</th>
-                <td>{{ cliente.email }}</td>
+                <th>Direccion</th>
+                <td>{{ cliente.direccion }}</td>
+            </tr>
+            <tr>
+                <th>Datos de Contacto</th>
+                <td>{{ cliente.datosContacto }}</td>
             </tr>
             <tr>
                 <th>Listado de pedidos</th>
                 <td>
                     <!--Comprobamos si existen pedidos asignados al cliente en nuestra BBDD-->
-                    {% if cliente.pedido_set.all %}
+                    {% if pedidos %}
                         <ul>
                             <!--Recorremos todos los pedidos asignados y los visualizamos como una lista no ordenada <ul>-->
-                            {% for pedidos in cliente.pedido_set.all %}
-                                <li>{{pedidos.fecha}}</li>
+                            {% for pedido in pedidos %}
+                                <table id="pedidos">
+                                    <tr>
+                                        <th>Referencia</th>
+                                        <td>{{ pedido.referencia }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Fecha</th>
+                                        <td>{{ pedido.fecha }}</td>
+                                    </tr>
+                                </table>
                             {% endfor %}
                         </ul>
                     <!--Sacamos un aviso de que no existen pedidos asignados en caso de no encontrarlos-->

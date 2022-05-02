@@ -10,7 +10,7 @@
     </header>
 
     <!--Formulario para modificar un producto existente mediante el metodo post.-->
-    <form class="acciones" method="POST" action=".">
+    <form class="acciones" method="POST" id="modificarComponente" action=".">
         {% csrf_token %}
         <!--Cargamos los campos del formulario desde UpdateView, los cuales deben estar rellenados-->
         <ul class="formularios">
@@ -30,12 +30,7 @@
                 <label for="id_descripcion">Descripción <span class="required">*</span></label>
                 {{ form.descripcion }}
             </li>
-            <li>
-                <label for="id_componentes">Componentes <span class="required">*</span></label>
-                {{ form.componentes }}
-            </li>
         </ul>
-
-        <input type="submit" value="Guardar">
+        <button value= "submit" type="submit" form="modificarComponente" value="Update">Guardar</button>
     </form>
 {% endblock %}

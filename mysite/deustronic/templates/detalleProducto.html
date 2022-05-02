@@ -19,49 +19,29 @@
         <table id="texto">
             <tr>
                 <th>Nombre</th>
-                <td>{{ detalle_producto.nombre }}</td>
+                <td>{{ producto.nombre }}</td>
             </tr>
             <tr>
                 <th>Precio</th>
-                <td>{{ detalle_producto.precio }}€</td>
+                <td>{{ producto.precio }}€</td>
             </tr>
             <tr>
                 <th>Categoría</th>
-                <td>{{ detalle_producto.categoria }}</td>
+                <td>{{ producto.categoria }}</td>
             </tr>
             <tr>
                 <th>Descripción</th>
-                <td>{{ detalle_producto.descripcion }}</td>
-            </tr>
-            <tr>
-                <th>Listado de pedidos</th>
-                <td>
-                    <!--Comprobamos si existen pedidos asignados al producto en nuestra BBDD-->
-                    {% if detalle_producto.compone_set.all %}
-                        <ul>
-                            <!--Recorremos todos los pedidos asignados y los visualizamos como una lista no ordenada <ul>-->
-                            {% for pedidos in detalle_producto.compone_set.all %}
-                                <li>{{pedidos.pedido}} cant.:{{pedidos.cantidad}}</li>
-                            {% endfor %}
-                        </ul>
-                    <!--Sacamos un aviso de que no existen pedidos asignados en caso de no encontrarlos-->
-                    {% else %}
-                        <h4>No se han asignado pedidos para este producto</h4>
-                        {% if perms.appGestionDePedidos.add_compone %}
-                            <p>Para añadir un pedido haga click <a href="{% url 'anyadirPedidoProducto' %}">aquí</a></p>
-                        {% endif %}
-                    {% endif %}
-                </td>
+                <td>{{ producto.descripcion }}</td>
             </tr>
             <tr>
                 <th>Listado de componentes</th>
                 <td>
                     <!--Comprobamos si existen componentes asignados al producto en nuestra BBDD-->
-                    {% if detalle_producto.componentes.all %}
+                    {% if componentes %}
                         <ul>
                             <!--Recorremos todos los componentes asignados y los visualizamos como una lista no ordenada <ul>-->
-                            {% for componentes in detalle_producto.componentes.all %}
-                                <li>{{componentes.nombre}}</li>
+                            {% for componente in componentes %}
+                                <li>{{componente.nombre}}</li>
                             {% endfor %}
                         </ul>
                     <!--Sacamos un aviso de que no existen componentes asignados en caso de no encontrarlos-->
@@ -72,6 +52,10 @@
                         {% endif %}
                     {% endif %}
                 </td>
+            </tr>
+            <tr>
+                <th></th>
+                <td><img alt = "{{ producto.nombre }}" class="image" src="/{{ producto.imagen }}"/></td>
             </tr>
         </table>
     </div>

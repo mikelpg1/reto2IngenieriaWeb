@@ -1,3 +1,4 @@
+from multiprocessing import context
 from sre_constants import SUCCESS
 from django.shortcuts import get_list_or_404, get_object_or_404, redirect, render
 from django.views import View
@@ -27,50 +28,50 @@ def inicio(request):
 class anyadirClienteView(View):
     def get(self, request, *args, **kwargs):
         form = ClienteForm()
-        return render(request, 'anyadir_cliente.html', {'form': form})
+        return render(request, 'anyadirCliente.html', {'form': form})
     
     def post(self, request, *args, **kwargs):
         form = ClienteForm(request.POST)
         if form.is_valid():
             form.save()
             return redirect('base')
-        return render(request, 'anyaadir_cliente.html', {'form': form})
+        return render(request, 'anyadirCliente.html', {'form': form})
 
 class anyadirProductoView(View):
     def get(self, request, *args, **kwargs):
         form = ProductoForm()
-        return render(request, 'anyadir_producto.html', {'form': form})
+        return render(request, 'anyadirProducto.html', {'form': form})
     
     def post(self, request, *args, **kwargs):
         form = ProductoForm(request.POST)
         if form.is_valid():
             form.save()
             return redirect('base')
-        return render(request, 'anyadir_producto.html', {'form': form})
+        return render(request, 'anyadirProducto.html', {'form': form})
     
 class anyadirComponenteView(View):
     def get(self, request, *args, **kwargs):
         form = ComponenteForm()
-        return render(request, 'anyadir_componente.html', {'form': form})
+        return render(request, 'anyadirComponente.html', {'form': form})
     
     def post(self, request, *args, **kwargs):
         form = ComponenteForm(request.POST)
         if form.is_valid():
             form.save()
             return redirect('base')
-        return render(request, 'anyaadir_componente.html', {'form': form})
+        return render(request, 'anyadirComponente.html', {'form': form})
     
 class anyadirPedidoView(View):
     def get(self, request, *args, **kwargs):
         form = PedidoForm()
-        return render(request, 'anyadir_pedido.html', {'form': form})
+        return render(request, 'anyadirPedido.html', {'form': form})
     
     def post(self, request, *args, **kwargs):
         form = PedidoForm(request.POST)
         if form.is_valid():
             form.save()
             return redirect('base')
-        return render(request, 'anyaadir_pedido.html', {'form': form})
+        return render(request, 'anyadirPedido.html', {'form': form})
 
 class anyadirComponenteProductoView(View):
     def get(self, request, *args, **kwargs):
@@ -83,99 +84,85 @@ class anyadirComponenteProductoView(View):
             form.save()
             return redirect('base')
         return render(request, 'anyaadir_componente_producto.html', {'form': form})
-        
-class anyadirPedidoView(View):
-    def get(self, request, *args, **kwargs):
-        form = PedidoForm()
-        return render(request, 'anyadir_pedido.html', {'form': form})
-    
-    def post(self, request, *args, **kwargs):
-        form = PedidoForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('base')
-        return render(request, 'anyaadir_pedido.html', {'form': form})
     
 # -- VISTAS DE VER --  #
 
 # VER PEDIDO #
-def detallePedidoView(request, pedido_id):
-    pedido = get_object_or_404(Pedido, pk=pedido_id)
-    return render(request, 'detallePedido.html', {'pedido': pedido})
-
-class detalleComponenteView(View):
-    model = Componente
-    template_name = 'detalleComponente.html'
-    context_object_name = 'componente'
+def detallePedidoView(request, pk):
+    pedido = get_object_or_404(Pedido, pk=pk)
+    productos = get_list_or_404(Producto.objects.order_by('nombre'))
     
-class detalleClienteView(View):
-    model = Cliente
-    template_name = 'detalleCliente.html'
-    context_object_name = 'cliente'
+    context = {
+        'pedido': pedido,
+        'productos': productos
+    }
+    return render(request, 'detallePedido.html', context)
 
-class detalleProductoView(View):
-    model = Producto
-    template_name = 'detalleProducto.html'
-    context_object_name = 'producto'
-
-'''class VerPedidoClienteView(View):
-     def get(self, request, *args, **kwargs):
-            Pedido = get_list_or_404(Producto.objects.order_by('producto_referencia'))
-        context = {
-            'producto': Producto,
-        }
-        return render(request, 'detalle_cliente.pedido.html', context)
+def detalleComponenteView(request, pk):
+    componente = get_object_or_404(Componente, pk=pk)
+    return render(request, 'detalleComponente.html', {'componente': componente})
     
-    def post(self, request, *args, **kwargs):
-        Producto = get_list_or_404(Producto.objects.order_by('producto_referencia'))
-        context = {
-            'producto': Producto,
-        }
-        return render(request, 'detalle_cliente.pedido.html', context)
-        
+def detalleClienteView(request, pk):
+    cliente = get_object_or_404(Cliente, pk=pk)
+    pedidos = Pedido.objects.filter(cliente=cliente)
+    
+    context = {
+        'cliente': cliente,
+        'pedidos': pedidos
+    }
+    return render(request, 'detalleCliente.html', context)
 
-'''
+def detalleProductoView(request, pk):
+    producto = get_object_or_404(Producto, pk=pk)
+    componentes = get_list_or_404(Componente.objects.order_by('nombre'))
+    
+    context = {
+        'producto': producto,
+        'componentes': componentes
+    }
+    return render(request, 'detalleProducto.html', context)
 
 class eliminarProductoView(DeleteView):
     model = Producto  
-    template_name = 'borrarProducto.html'  
+    template_name = 'eliminarProducto.html'  
     success_url = reverse_lazy('base') 
     
 class eliminarComponenteView(DeleteView):
     model = Componente  
-    template_name = 'borrarComponente.html'  
+    template_name = 'eliminarComponente.html'  
     success_url = reverse_lazy('base')
     
 class eliminarClienteView(DeleteView):
     model = Cliente  
-    template_name = 'borrarCliente.html'  
+    template_name = 'eliminarCliente.html'  
     success_url = reverse_lazy('base')
     
 class eliminarPedidoView(DeleteView):
     model = Pedido
-    template_name = 'borrarPedido.html'
+    template_name = 'eliminarPedido.html'
     success_url = reverse_lazy('base')
     
 class modificarProductoView(UpdateView):
         model = Producto
         template_name = 'modificarProducto.html'
-        fields = ['nombre', 'descripcion', 'categoria', 'precio', 'pdf']
-        success_url = reverse_lazy('listaProducto')
+        fields = ['nombre', 'categoria', 'descripcion', 'precio']
+        success_url = reverse_lazy('base')
 
 class modificarComponenteView(UpdateView):
         model = Componente
         template_name = 'modificarComponente.html'
-        fields = ['nombre', 'descripcion', 'categoria', 'precio', 'pdf']
-        success_url = reverse_lazy('listaComponente')
+        fields = ['nombre', 'marca']
+        success_url = reverse_lazy('base')
+        
         
 class modificarClienteView(UpdateView):
         model = Cliente
         template_name = 'modificarCliente.html'
-        fields = ['nombre', 'apellidos', 'direccion', 'telefono', 'email']
-        success_url = reverse_lazy('listaCliente')
+        fields = ['CIF', 'nombreEmpresa', 'direccion', 'datosContacto']
+        success_url = reverse_lazy('base')
         
 class modificarPedidoView(UpdateView):
         model = Pedido
         template_name = 'modificarPedido.html'
-        fields = ['referencia', 'fecha', 'cliente', 'producto', 'componente']
-        success_url = reverse_lazy('listaPedido')
+        fields = ['cantidadproducto', 'precioTotal']
+        success_url = reverse_lazy('base')
