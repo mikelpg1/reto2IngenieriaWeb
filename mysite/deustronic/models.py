@@ -1,5 +1,5 @@
 from django.db import models
-from datetime import datetime
+#from datetime import datetime
 # Create your models here.
 class Componente(models.Model):
     referencia = models.IntegerField(max_length=20, primary_key=True)
@@ -20,7 +20,8 @@ class Producto(models.Model):
     imagen = models.ImageField(upload_to = 'deustronic/static/img/productos', blank = True, null = True, verbose_name='imagen')
     
     def __str__(self):
-        return self.nombre
+        return self.nombre  
+    
     
 class Cliente(models.Model):
     CIF = models.IntegerField(max_length=9, primary_key=True)

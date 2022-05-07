@@ -24,6 +24,7 @@ def inicio(request):
 
 # -- VISTAS DE AÑADIR --  # 
 
+
 # AÑADIR CLIENTE #
 class anyadirClienteView(View):
     def get(self, request, *args, **kwargs):

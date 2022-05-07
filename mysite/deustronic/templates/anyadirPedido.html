@@ -15,17 +15,26 @@
         <!--Cargamos los campos del formulario indicados en el metodo get dentro de nuestra vista-->
         <ul class="formularios">
             <li>
-                <label for="id_Fecha">Fecha (año-mes-día) <span class="required">*</span></label>
-                {{ form.fecha }}
+                <label for="id_referencia">Referencia <span class="required">*</span></label>
+                {{ form.referencia }} 
             </li>
             <li>
-                <label for="id_precioTotal">Precio Total<span class="required">*</span></label>
-                {{ form.precioTotal }} 
+                <label for="id_producto">Producto <span class="required">*</span></label>
+                {{ form.producto }} 
+            </li>
+            <li>
+                <label for="id_cantidadproducto">Cantidad de productos <span class="required">*</span></label>
+                {{ form.cantidadproducto }} 
             </li>
             <li>
                 <label for="id_cliente">Cliente <span class="required">*</span></label>
                 {{ form.cliente }} 
             </li>
+            <li>
+                <label for="id_precioTotal">Precio Total <span class="required">*</span></label>
+                {{ form.precioTotal }} 
+            </li>
+            
         </ul>
 
         <p class = "aviso">AVISO: Para asignar un pedido a un producto con una catidad determinada vaya a la pestaña 'ASIGNAR PRODUCTO' dentro de 'GESTIÓN DE PEDIDOS'</p>
