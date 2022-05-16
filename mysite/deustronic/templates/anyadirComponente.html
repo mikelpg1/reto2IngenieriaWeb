@@ -15,12 +15,20 @@
         <!--Cargamos los campos del formulario indicados en el metodo get dentro de nuestra vista-->
         <ul class="formularios">
             <li>
+                <label for="id_codigoReferencia">Código Referencia <span class="required">*</span></label>
+                {{ form.referencia }}
+            </li>
+            <li>
                 <label for="id_nombre">Nombre <span class="required">*</span></label>
                 {{ form.nombre }}
             </li>
             <li>
                 <label for="id_marca">Marca <span class="required">*</span></label>
                 {{ form.marca }} 
+            </li>
+            <li>
+                <label for="id_imagen">Imagen <span class="required">*</span></label>
+                {{ form.imagen }}
             </li>
         </ul>
 

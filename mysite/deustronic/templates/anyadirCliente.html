@@ -16,27 +16,22 @@
         <!--Cargamos los campos del formulario indicados en el metodo get dentro de nuestra vista-->
         <ul class="formularios">
             <li>
-                <label for="id_cif">CIF *</span></label>
-                {{ form.cif }}
+                <label for="id_cif">CIF *<span class="required">*</span></label>
+                {{ form.CIF }}
             </li>
             <li>
-                <label for="id_nombre">Nombre <span class="required">*</span></label>
-                {{ form.nombre }} 
-            </li>
-            <li>
-                <label for="id_telefono">Telefono *</span></label>
-                {{ form.telefono }} 
-            </li>
-            <li>
-                <label for="id_nombreEmpresa">Nombre de la empresa *</span></label>
+                <label for="id_nombreEmpresa">Nombre de la empresa <span class="required">*</span></label>
                 {{ form.nombreEmpresa }} 
             </li>
             <li>
-                <label for="id_email">Email *</s></label>
-                {{ form.email }} 
+                <label for="id_direccion">Dirección </label>
+                {{ form.direccion }} 
+            </li>
+            <li>
+                <label for="id_email">Datos Contacto </label>
+                {{ form.datosContacto }} 
             </li>
         </ul>
-
         <input type="submit" value="Nuevo cliente">
     </form>
 {% endblock %}

@@ -12,6 +12,7 @@
     <div class = "formularios">
         <!--Formulario para eliminar un componente existente mediante el metodo post. La accion se desarrolla mediante el id del componente.-->
         <form class="acciones" method="POST" action=".">
+            {% csrf_token %}
             <p>Está seguro que desea eliminar: {{ componente.nombre }}?</p>
             <input type="submit" value="Eliminar">
         </form>

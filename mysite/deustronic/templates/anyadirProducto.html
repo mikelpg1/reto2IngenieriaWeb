@@ -15,24 +15,32 @@
         <!--Cargamos los campos del formulario indicados en el metodo get dentro de nuestra vista-->
         <ul class="formularios">
             <li>
-                <label for="id_nombre">Nombre <span class="required">*</span></label>
-                {{ form.nombre }}
+                <label for="id_referencia">Referencia <span class="required">*</span></label>
+                {{ form.referencia }}
             </li>
             <li>
                 <label for="id_precio">Precio <span class="required">*</span></label>
                 {{ form.precio }} 
             </li>
             <li>
-                <label for="id_categoria">Categoria <span class="required">*</span></label>
-                {{ form.categoria }} 
+                <label for="id_nombre">Nombre <span class="required">*</span></label>
+                {{ form.nombre }} 
             </li>
             <li>
                 <label for="id_descripcion">Descripción <span class="required">*</span></label>
                 {{ form.descripcion }}
             </li>
             <li>
+                <label for="id_categoria">Categoría <span class="required">*</span></label>
+                {{ form.categoria }} 
+            </li>
+            <li>
                 <label for="id_componentes">Componentes <span class="required">*</span></label>
-                {{ form.componentes }}
+                {{ form.componente }}
+            </li>
+            <li>
+            <label for="id_componentes">Imagen <span class="required">*</span></label>
+                {{ form.imagen }}
             </li>
         </ul>   
 
