@@ -21,6 +21,15 @@
                     <li><a href="{% url 'anyadirPedido' %}">AÑADIR PEDIDOS</a></li>
                     <li><a href="{% url 'anyadirComponente' %}">AÑADIR COMPONENTES</a></li>
                     <li><a href="{% url 'anyadirCliente' %}">AÑADIR CLIENTES</a></li>
+                    {% if user.is_authenticated %}
+                        <li><a href= "">{{user.username}}</a>
+                            <ul>
+                                <li><a href="{% url 'logout' %}">Log Out</a></li>
+                            </ul>
+                        </li> 
+                    {% else %}
+                        <li><a href="{% url 'login' %}">Log In</a></li>
+                    {% endif %}
                 </ul>
             </nav>
         </div>
@@ -29,6 +38,10 @@
     </header>
 
     <main>
+        {% if user.is_authenticated%}
+        {% else %}
+            <h1>Usted no esta logueado</h1>
+        {% endif %}
         <!--Bloque en el que se visualiza la informacion y va variando en funcion al html cargado.-->
         {% block content %}{% endblock %}
     </main>

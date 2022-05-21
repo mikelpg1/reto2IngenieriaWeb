@@ -1,0 +1,15 @@
+{%load static %}
+
+<form class="acciones" action="{% url 'iniciarSesion' %}" method="post">
+    {% csrf_token %}
+    <!--Cargamos los campos del formulario indicados en el metodo get dentro de nuestra vista-->
+    <ul class="formularios">
+        <li>
+            <label for="nombreUsuario">Nombre usuario <span class="required">*</span></label>
+            {{ form.nombre }}
+        </li>
+        <li>
+            <label for="contrasena">Contraseña <span class="required">*</span></label>
+            {{ form.precio }} 
+        </li>
+    </ul>   

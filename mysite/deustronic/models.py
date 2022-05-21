@@ -2,7 +2,7 @@ from django.db import models
 #from datetime import datetime
 # Create your models here.
 class Componente(models.Model):
-    referencia = models.IntegerField(max_length=20, primary_key=True)
+    referencia = models.IntegerField(primary_key=True)
     nombre = models.CharField(max_length=45)
     marca = models.CharField(max_length=45)
     imagen = models.ImageField(upload_to='deustronic/static/img/componentes', blank = True, null =False, verbose_name='imagen')
@@ -11,7 +11,7 @@ class Componente(models.Model):
         return self.nombre
    
 class Producto(models.Model):
-    referencia = models.IntegerField(max_length=20, primary_key=True)
+    referencia = models.IntegerField(primary_key=True)
     nombre = models.CharField(max_length = 45)
     categoria = models.CharField(max_length=25)
     componente = models.ManyToManyField(Componente)
@@ -24,7 +24,7 @@ class Producto(models.Model):
     
     
 class Cliente(models.Model):
-    CIF = models.IntegerField(max_length=9, primary_key=True)
+    CIF = models.IntegerField(primary_key=True)
     nombreEmpresa = models.CharField(max_length=45)
     direccion = models.CharField(max_length=45)
     datosContacto = models.CharField(max_length= 45)
@@ -33,7 +33,7 @@ class Cliente(models.Model):
         return self.nombreEmpresa
 
 class Pedido(models.Model):
-    referencia = models.IntegerField(max_length=20, primary_key=True)
+    referencia = models.IntegerField(primary_key=True)
     fecha = models.DateField(auto_now = True)
     cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE, null = True)
     producto = models.ManyToManyField(Producto)
@@ -45,3 +45,4 @@ class Pedido(models.Model):
     
     def productos(self):
         return self.producto.all()
+    

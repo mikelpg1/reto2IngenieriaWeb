@@ -1,5 +1,6 @@
 from multiprocessing import context
 from sre_constants import SUCCESS
+from urllib import request
 from django.shortcuts import get_list_or_404, get_object_or_404, redirect, render
 from django.views import View
 from django.urls import reverse_lazy
@@ -167,3 +168,4 @@ class modificarPedidoView(UpdateView):
         template_name = 'modificarPedido.html'
         fields = ['cantidadproducto', 'precioTotal']
         success_url = reverse_lazy('base')
+        

@@ -21,3 +21,5 @@ class PedidoForm(forms.ModelForm):
         model = Pedido
         fields = '__all__'
         
+
+        
