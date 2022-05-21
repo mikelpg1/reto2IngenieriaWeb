@@ -178,30 +178,33 @@ main h2{
 /* PÁG. PRINCIPAL*/
 /*CABECERA DE LA PAGINA PRINCIPAL*/
 #cabecera-pag-princ{
-    height: 700px;
+    height: 350px;
     width: 100%;
     background-image: url(../IMG/pag-princ.jpg);
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-size: cover;
+    
 }
 
 #cabecera-pag-princ #titulo{
-    background: rgba(0,0,0,.4);
+    
     text-align: center;
     padding-top: 110px;
     padding-bottom: 0px;
 }
 
 #cabecera-pag-princ img{
-padding-top: 0px;
+
+    
+    padding-top: 0px;
 
 }
 
 #cabecera-pag-princ h1{
     font-family: "montserrat", Arial, Helvetica, sans-serif;
-    font-size: 50px;
-    font-weight: 500px;
+    font-size: 25px;
+    font-weight: 300px;
     color: white;
 }
 
@@ -663,4 +666,14 @@ input[type=submit]:hover{
 #textoNoResultado {
     text-align: left;
     margin-left: 20px;
+}
+
+/* LISTADO OBJETOS */
+
+#lista{
+
+    color: blue;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    
+
 }
