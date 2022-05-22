@@ -96,15 +96,14 @@
 
 /*PIE DE PÁGINA --> IGUAL PARA TODOS*/
 .pie{
-    background-color: rgb(33, 37, 41);
-    min-height: 95px;
-    height: 100%;
+    background-color: rgba(38, 45, 52, 0.5);
     width: 100%;
-    bottom: 0;
-    clear: right;
-    clear: left;
     display: flex;
     align-items: center;
+    height: 90px;
+    position: fixed;
+    bottom: 0;
+
 }
 
 .pie #redes {
@@ -178,12 +177,15 @@ main h2{
 /* PÁG. PRINCIPAL*/
 /*CABECERA DE LA PAGINA PRINCIPAL*/
 #cabecera-pag-princ{
-    height: 350px;
+    margin-left: auto;
+    margin-right: auto;
     width: 100%;
-    background-image: url(../IMG/pag-princ.jpg);
+    height: 350px;
+    background-image: url(../IMG/imagen-fondo.jpg);
+    background-size: contain;
+    width: auto;
     background-attachment: fixed;
     background-repeat: no-repeat;
-    background-size: cover;
     
 }
 
@@ -216,49 +218,41 @@ main h2{
 }
 
 /*LISTADO DE PRODUCTOS Y LISTADO DE CLIENTES*/
-#listadosIzq{
-    float: left;
-    width: 49%;
+#listados{
+    float: center;
+    width: 100%;
+    height: auto;
     margin-left: 10px;
 }
 
-/*LISTADO DE PEDIDOS Y LISTADO DE COMPONENTES*/
-#listadosDcha{
-    float: right;
-    width: 49%;
-    margin-right: 10px;
+.listadostitulo{
+    margin-top: 80px;
 }
+
 
 /*FORMATO DE LISTADOS -> IGUAL PARA TODOS LOS LISTADOS*/
+
 .listados header{
     padding: 30px;
+    float: left;
     font-family: "montserrat";
     font-size: 25px;
-    color: rgb(241, 241, 241);
-    background-color: rgba(0, 0, 0, .7);
-}
-
-.listados h3 span{
-    background: black;
-    color: rgb(241, 241, 241);
-    border: solid rgb(241, 241, 241);
-    border-radius: 50%;
-    display: inline-block;
-    text-align: center;
-    width: 35px;
-    margin-right: 10px;
-    margin-left: 10px;
+    color: #6a9eda;
 }
 
 .listadosContenido ul{
     height: 300px;
     overflow:hidden; 
+
+
 }
+
+
 
 .listadosContenido {
     height: 300px;
     margin-bottom: 15px;
-    padding: 5px;
+    padding: 100px;
     justify-content: center;
     align-items: center;
     font-family: Calibri, Verdana, Geneva, Tahoma, sans-serif;
@@ -268,7 +262,7 @@ main h2{
 .listadosContenido ul li {
     width: 100%;
     list-style: none;
-    padding: 10px;
+    padding: 15px;
 }
 
 .listadosContenido ul li:hover{
@@ -283,7 +277,7 @@ main h2{
     color: gainsboro;
     display: inline-block;
     text-align: center;
-    width: 33px;
+    width: auto;
     padding-top: 5px;
     padding-bottom: 5px;
     font-size: 13px;
@@ -296,8 +290,9 @@ main h2{
     color: black;
 }
 
-.añadir:hover{
-    color: rgb(136, 136, 136);
+
+.añadir1:hover{
+    color: rgb(194, 4, 4);
     transition: color 0.4s;
 }
 
@@ -382,10 +377,26 @@ main h2{
     transition: background-color 0.5s;
 }
 
+/*BOTON DE añadir EN LISTADOS*/
+.añadir{
+    float: left;
+    margin-right: 15px;
+    padding: 3px;
+    font-weight: bold;
+    font-size: 50px;
+    text-decoration: none;
+    color: #88D5E9;
+}
+
+#header h1 { display:inline; }
+
+
+
+
 /*POSICION DE LOS LISTADOS*/
 .listadosContenido h4{
     text-align: center;
-    padding-top: 20px;
+    padding-top: 80px;
 }
 
 .listadosContenido p{
@@ -640,9 +651,9 @@ input[type=submit]:hover{
 
 /*FORMULARIO BUSQUEDA*/
 .busqueda {
-    padding: 5px;
-    padding-left: 10px;
-    margin: auto;
+    text-align: center;
+    padding-top: 75px;
+
 }
 
 .input {

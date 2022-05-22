@@ -1,27 +1,68 @@
 from multiprocessing import context
+from pyexpat import model
 from sre_constants import SUCCESS
 from urllib import request
 from django.shortcuts import get_list_or_404, get_object_or_404, redirect, render
 from django.views import View
+from django.views.generic.list import ListView
 from django.urls import reverse_lazy
 from .forms import *
 from .models import *
 from django.views.generic.edit import DeleteView, UpdateView
+from django.http import HttpResponse
+
 
 # Create your views here.
-def inicio(request):
-    componente = get_list_or_404(Componente);
-    producto = get_list_or_404(Producto);
+def listadoCliente(request):
     cliente = get_list_or_404(Cliente);
-    pedido = get_list_or_404(Pedido);
     
     context = {
-        'componentes': componente,
+        'clientes': cliente,
+    }
+    return render(request, "listadoCliente.html", context)
+
+# -- VISTAS DE Listado --  # 
+
+def inicio(request):
+    producto = get_list_or_404(Producto);
+    cliente = get_list_or_404(Cliente);
+    componente = get_list_or_404(Componente);
+    pedido = get_list_or_404(Pedido)
+
+
+    context = {
         'productos': producto,
         'clientes': cliente,
-        'pedidos': pedido
+        'pedidos': pedido,
+        'componentes': componente
     }
     return render(request, "pagPrincipal.html", context)
+
+def listadoProducto(request):
+    producto = get_list_or_404(Producto)
+    context = {
+        'productos': producto,
+    }
+    return render(request, "listadoProducto.html", context)
+
+def listadoPedido(request):
+    pedido = get_list_or_404(Pedido)
+    producto = get_list_or_404(Producto)
+
+    context = {
+        'pedidos': pedido,
+        'productos': producto
+    }
+    return render(request, "listadoPedido.html", context)
+
+
+
+def listadoComponente(request):
+    componente = get_list_or_404(Componente)
+    context = {
+        'componentes': componente,
+    }
+    return render(request, "listadoComponente.html", context)
 
 # -- VISTAS DE AÑADIR --  # 
 
@@ -92,11 +133,9 @@ class anyadirComponenteProductoView(View):
 # VER PEDIDO #
 def detallePedidoView(request, pk):
     pedido = get_object_or_404(Pedido, pk=pk)
-    productos = get_list_or_404(Producto.objects.order_by('nombre'))
     
     context = {
         'pedido': pedido,
-        'productos': productos
     }
     return render(request, 'detallePedido.html', context)
 
@@ -145,27 +184,30 @@ class eliminarPedidoView(DeleteView):
     success_url = reverse_lazy('base')
     
 class modificarProductoView(UpdateView):
-        model = Producto
-        template_name = 'modificarProducto.html'
-        fields = ['nombre', 'categoria', 'descripcion', 'precio']
-        success_url = reverse_lazy('base')
+    model = Producto
+    template_name = 'modificarProducto.html'
+    fields = ['nombre', 'categoria', 'descripcion', 'precio']
+    success_url = reverse_lazy('base')
 
 class modificarComponenteView(UpdateView):
-        model = Componente
-        template_name = 'modificarComponente.html'
-        fields = ['nombre', 'marca']
-        success_url = reverse_lazy('base')
+    model = Componente
+    template_name = 'modificarComponente.html'
+    fields = ['nombre', 'marca']
+    success_url = reverse_lazy('base')
         
         
 class modificarClienteView(UpdateView):
-        model = Cliente
-        template_name = 'modificarCliente.html'
-        fields = ['CIF', 'nombreEmpresa', 'direccion', 'datosContacto']
-        success_url = reverse_lazy('base')
+    model = Cliente
+    template_name = 'modificarCliente.html'
+    fields = ['CIF', 'nombreEmpresa', 'direccion', 'datosContacto']
+    success_url = reverse_lazy('base')
         
 class modificarPedidoView(UpdateView):
-        model = Pedido
-        template_name = 'modificarPedido.html'
-        fields = ['cantidadproducto', 'precioTotal']
-        success_url = reverse_lazy('base')
-        
+    model = Pedido
+    template_name = 'modificarPedido.html'
+    fields = ['cantidadproducto', 'precioTotal']
+    success_url = reverse_lazy('base')
+
+
+ 
+
