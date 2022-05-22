@@ -2,6 +2,7 @@
 {% extends "base.html" %}
 {% load static %}
 
+
 <!--Bloque content, que varia dependiendo el html.-->
 {% block content %}
     <header>
@@ -25,6 +26,8 @@
             <li>
                 <label for="id_cantidadproducto">Cantidad de productos <span class="required">*</span></label>
                 {{ form.cantidadproducto }} 
+                input(form.cantidadproducto)
+
             </li>
             <li>
                 <label for="id_cliente">Cliente <span class="required">*</span></label>
