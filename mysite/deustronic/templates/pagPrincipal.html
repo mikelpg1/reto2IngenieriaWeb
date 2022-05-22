@@ -22,6 +22,12 @@
     
     <!--Comprobamos que hayan usuarios autenticados-->
     {% if user.is_authenticated %}
+
+        <p>Tamaño de fuente:
+            <p>
+                <button class="btn btn-success" id="subirBtn">A<sup>+</sup></button>
+                <button class="btn btn-primary" id="bajarBtn">A<sup>-</sup></button>
+            <br><br>
         <!--Primer articulo donde se visualizara el listado de productos.-->
         <article class="listados" id="listadosIzq">
             <header>

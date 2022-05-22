@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- enlace de archivo CSS-->
     <link rel="stylesheet" href="{% static 'CSS/style.css' %}?{% now 'U' %}">
+    <link rel="stylesheet" href="{% static '/CSS/CambiarTamano.css' %}">
+
 </head>
 
 <body>
@@ -36,6 +38,7 @@
         </div>
 
         {% block tituloPrincipal %}{% endblock %}
+
     </header>
 
     <main>
@@ -46,6 +49,12 @@
         <!--Bloque en el que se visualiza la informacion y va variando en funcion al html cargado.-->
         {% block content %}{% endblock %}
     </main>
+
+
+    <div id="botones">
+            <button id="aumentarTamaño">Aumentar Tamaño</button>
+            <button id="bajarTamaño">bajar Tamaño </button>
+        </div>
 
     <footer class="pie">
 
@@ -63,6 +72,9 @@
 
 
     </footer>
+
+    <script src="{% static '/js/cambiarTamano.js' %}"></script>
+
 </body>
 
 

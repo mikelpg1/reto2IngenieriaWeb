@@ -208,6 +208,3 @@ class modificarPedidoView(UpdateView):
     fields = ['cantidadproducto', 'precioTotal']
     success_url = reverse_lazy('base')
 
-
- 
-

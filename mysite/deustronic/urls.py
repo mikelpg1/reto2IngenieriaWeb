@@ -32,8 +32,7 @@ urlpatterns = [
     path('listadoProducto', views.listadoProducto, name='listadoProducto'),
     path('listadoComponente', views.listadoComponente, name='listadoComponente'),
     path('listadoPedido', views.listadoPedido, name='listadoPedido'),
-    path('listadoCliente', views.listadoCliente, name='listadoCliente')
-
+    path('listadoCliente', views.listadoCliente, name='listadoCliente'),
 
 
 ]
