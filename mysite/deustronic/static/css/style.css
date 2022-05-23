@@ -217,6 +217,47 @@ main h2{
     padding-bottom: 15px;
 }
 
+#titulo_inicial { /* nueva */
+
+    font-size: 2em;
+}
+
+.titular{ /* nueva */
+
+    font-family: "montserrat", Arial, Helvetica, sans-serif;
+    font-size: 2em;
+
+}
+
+.container_parrafo { /* nueva */
+
+    font-family: "poppins", Arial, Helvetica, sans-serif;
+    margin-top: 15px;
+    text-align: justify;
+
+}
+
+#introduccion { /* nueva */
+
+    margin-bottom: 30px;
+}
+
+.cuadrado { /* nueva */
+    
+    display: inline-flex;
+    margin-right: 30px;
+    margin-left: 40px;
+    margin-top: 30px;
+}
+
+#bloque_final {  /* nueva */
+
+    margin-top: 30px;
+
+
+
+}
+
 /*LISTADO DE PRODUCTOS Y LISTADO DE CLIENTES*/
 #listados{
     float: center;

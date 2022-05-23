@@ -13,209 +13,118 @@
     </div>
 {% endblock %}
 
-<!--Contenido de la página donde se visualizarán todos los listados-->
+<!--Contenido de la página donde se visualizarán la informacion principal-->
 {% block content %}
     
     <header>
-        <h2>LISTADOS GENERALES</h2>
+        <h2 id="titulo_inicial">¡BIENVENIDO A DEUSTRONIC!</h2>
     </header>
     
+    
     <!--Comprobamos que hayan usuarios autenticados-->
-    {% if user.is_authenticated %}
+    {% if user.is_authenticated %} 
 
-        <p>Tamaño de fuente:
-            <p>
-                <button class="btn btn-success" id="subirBtn">A<sup>+</sup></button>
-                <button class="btn btn-primary" id="bajarBtn">A<sup>-</sup></button>
-            <br><br>
-        <!--Primer articulo donde se visualizara el listado de productos.-->
-        <article class="listados" id="listadosIzq">
-            <header>
-                <h3><span>1</span>LISTADO DE PRODUCTOS</h3>
-            </header>
+    <main>
 
-            <div class="listadosContenido">
-                <div class="busqueda">
-                    <form class="busqueda" id="formularioBusqueda" method="post" action="buscarProducto/">
-                        {% csrf_token %}
-                        <input class="input" type="text" name="lupa" class="search-query" placeholder="Buscar nombre del producto">
-                        <button class="boton" type="submit"><img src="{% static 'IMG/lupa.png' %}" alt="Lupa"></button>
-                        
-                    </form>
-                </div>
+        <!--SECCION DE INTRODUCCION -->
 
-                <!--Comprobamos si existen productos en nuestra BBDD-->
-                {% if productos %}
-                    <ul>
-                        <!--Recorremos todos los productos existentes y los visualizamos como una lista no ordenada <ul>-->
-                        {% for producto in productos %}
-                            <li>
-                                <span>{{producto.pk}}</span>{{producto.nombre}}
-                                <!--Solo se podrá visualizar si se tiene acceso-->
-                                {% if perms.appGestionDePedidos.view_producto %}
-                                    <a class="detalles" href="http://127.0.0.1:8000/deustronic/detalleProducto/{{producto.pk}}/">detalles</a>
-                                {% endif %}  
-                                <!--Solo se podrá visualizar si se tiene acceso-->
-                                {% if perms.appGestionDePedidos.delete_producto %}
-                                    <a class="eliminar" href="http://127.0.0.1:8000/deustronic/eliminarProducto/{{producto.pk}}/">eliminar</a>
-                                {% endif %} 
-                                <!--Solo se podrá visualizar si se tiene acceso-->
-                                {% if perms.appGestionDePedidos.change_producto %}
-                                    <a class="modificar" href="http://127.0.0.1:8000/deustronic/modificarProducto/{{producto.pk}}/">modificar</a>
-                                {% endif %} 
-                            </li>
-                        {% endfor %}
-                    </ul>
+        <div id="introduccion">
 
-                <!--Sacamos un aviso de que no existen productos en caso de no encontrarlos-->
-                {% else %}
-                    <h4>No existen productos en Deustronic Components S.L.</h4>
-                    {% if perms.appGestionDePedidos.add_producto %}
-                        <p>Para añadir un producto haga click <a class="añadir" href="{% url 'anyadirProducto' %}">aquí</a></p>
-                    {% endif %}
-                {% endif %}
-            </div>
-        </article>
 
-        <!--Segundo articulo donde se visualizara el listado de pedidos.-->
-        <article class="listados" id="listadosDcha">
-            <header>
-                <h3><span>2</span>LISTADO DE PEDIDOS</h3>
-            </header>
+            <h1 class="titular"> ¿Quienes somos? </h1>
+
+                <p class="container_parrafo">Deustronic Components S.L. es una empresa especializada en fabricación de productos electronicos, integración de sistemas de seguridad, con ingeniería y desarrollo propio, lo que nos permite adaptar nuestras soluciones 
+                    a las necesidades del cliente. En Deustronic S.L. llevamos más de 30 años ofreciendo seguridad a medida. Desarrollamos y fabricamos nuestros propios controles de acceso, por lo que podemos adaptarnos a todas las necesidades que les puedan surgir 
+                    a nuestros clientes. <br><br> Ofrecemos los medios necesarios para facilitar un entorno laboral seguro, proporcionando la última tecnología a nuestro alcance tanto en Hardware como en Software. Nos gustan los retos y por eso nos embarcamos en proyectos 
+                    ambiciosos en nichos de mercado que entendemos como prioritarios y donde aportamos más valor: las Infraestructuras Críticas.</p>
+
+        </div>
+
+        <!--SECCION DE FOTOS -->
+
+        <div id="seccion_fotos">
+           
             
-            <div class="listadosContenido">
-                <div class="busqueda">
-                    <form class="busqueda" id="formularioBusqueda" method="post" action="buscarPedido/">
-                        {% csrf_token %}
-                        <input class="input" type="text" name="lupa" class="search-query" placeholder="Buscar fecha del pedido">
-                        <button class="boton" type="submit"><img src="{% static 'IMG/lupa.png' %}" alt="Lupa"></button>
-                    </form>
-                </div>
-                <!--Comprobamos si existen pedidos en nuestra BBDD-->
-                {% if pedidos %}
-                    <ul>
-                        <!--Recorremos todos los pedidos existentes y los visualizamos como una lista no ordenada <ul>-->
-                        {% for pedido in pedidos %}
-                            <li>
-                                <span>{{pedido.pk}}</span>{{pedido.fecha}}
-                                <!--Solo se podrá visualizar si se tiene acceso-->
-                                {% if perms.appGestionDePedidos.view_pedido %}
-                                    <a class="detalles" href="http://127.0.0.1:8000/deustronic/detallePedido/{{pedido.pk}}/">detalles</a>
-                                {% endif %}
-                                <!--Solo se podrá visualizar si se tiene acceso-->
-                                {% if perms.appGestionDePedidos.delete_pedido %}
-                                    <a class="eliminar" href="http://127.0.0.1:8000/deustronic/eliminarPedido/{{pedido.pk}}/">eliminar</a>
-                                {% endif %}
-                                <!--Solo se podrá visualizar si se tiene acceso-->
-                                {% if perms.appGestionDePedidos.change_pedido %}
-                                    <a class="modificar" href="http://127.0.0.1:8000/deustronic/modificarPedido/{{pedido.pk}}">modificar</a>
-                                {% endif %}
-                            </li>
-                        {% endfor %}
-                    </ul>
-                <!--Sacamos un aviso de que no existen pedidos en caso de no encontrarlos-->
-                {% else %}
-                    <h4>No existen pedidos en Deustronic Components S.L.</h4>
-                    {% if perms.appGestionDePedidos.add_pedido %}
-                        <p>Para añadir un pedido haga click <a class="añadir" href="{% url 'anyadirPedido' %}">aquí</a></p>
-                    {% endif %}
-                {% endif %}
-            </div>
-        </article>
 
-        <!--Tercer articulo donde se visualizara el listado de clientes.-->
-        <article class="listados" id="listadosIzq">
-            <header>
-                <h3><span>3</span>LISTADO DE CLIENTES</h3>
-            </header>
+            <h1 class="titular"> Nuestros productos estrella: </h1>
 
-            <div class="listadosContenido">
-                <div class="busqueda">
-                    <form class="busqueda" id="formularioBusqueda" method="post" action="buscarCliente/">
-                        {% csrf_token %}
-                        <input class="input" type="text" name="lupa" class="search-query" placeholder="Buscar nombre del cliente">
-                        <button class="boton" type="submit"><img src="{% static 'IMG/lupa.png' %}" alt="Lupa"></button>
-                    </form>
-                </div>
-                <!--Comprobamos si existen clientes en nuestra BBDD-->
-                {% if clientes %}
-                    <ul>
-                        <!--Recorremos todos los clientes existentes y los visualizamos como una lista no ordenada <ul>-->
-                        {% for cliente in clientes %}
-                            <li>
-                                <span>{{cliente.pk}}</span>{{cliente.nombreEmpresa}}
-                                <!--Solo se podrá visualizar si se tiene acceso-->
-                                {% if perms.appGestionDePedidos.view_cliente %}
-                                    <a class="detalles" href="http://127.0.0.1:8000/deustronic/detalleCliente/{{cliente.pk}}/">detalles</a>
-                                {% endif %}
-                                <!--Solo se podrá visualizar si se tiene acceso-->
-                                {% if perms.appGestionDePedidos.delete_cliente %}
-                                    <a class="eliminar" href="http://127.0.0.1:8000/deustronic/eliminarCliente/{{cliente.pk}}/">eliminar</a>
-                                {% endif %}
-                                <!--Solo se podrá visualizar si se tiene acceso-->
-                                {% if perms.appGestionDePedidos.change_cliente %}
-                                    <a class="modificar" href="http://127.0.0.1:8000/deustronic/modificarCliente/{{cliente.pk}}">modificar</a>
-                                {% endif %}
-                            </li>
-                        {% endfor %}
-                    </ul>
-                <!--Sacamos un aviso de que no existen clientes en caso de no encontrarlos-->
-                {% else %}
-                    <h4>No existen clientes en Deustronic Components S.L.</h4>
-                    
-                    {% if perms.appGestionDePedidos.add_cliente %}
-                        <p>Para añadir un cliente haga click <a class="añadir" href="{% url 'anyadirCliente' %}">aquí</a></p>
-                    {% endif %}
-                {% endif %}
-            </div>
-        </article>
+            <div class="cuadrado">
 
-        <!--Cuarto y ultimo articulo donde se visualizara el listado de componentes-->
-        <article class="listados" id="listadosDcha">
-            <header>
-                <h3><span>4</span>LISTADO DE COMPONENTES</h3>
-            </header>
-            
-            <div class="listadosContenido">
-                <div class="busqueda">
-                    <form class="busqueda" method="post" action="buscarComponente/">
-                        {% csrf_token %}
-                        <input class="input" type="text" name="lupa" class="search-query" placeholder="Buscar nombre del componente">
-                        <button class="boton" type="submit"><img src="{% static 'IMG/lupa.png' %}" alt="Lupa"></button>
-                    </form>
-                </div>
-                <!--Comprobamos si existen componentes en nuestra BBDD-->
-                {% if componentes %}
-                    <ul>
-                        <!--Recorremos todos los componentes existentes y los visualizamos como una lista no ordenada <ul>-->
-                        {% for componente in componentes %}
-                            <li>
-                                <span>{{componente.pk}}</span>{{componente.nombre}}
-                                <!--Solo se podrá visualizar si se tiene acceso-->
-                                {% if perms.appGestionDePedidos.view_componente %}
-                                    <a class="detalles" href="http://127.0.0.1:8000/deustronic/detalleComponente/{{componente.pk}}">detalles</a>
-                                {% endif %}
-                                <!--Solo se podrá visualizar si se tiene acceso-->
-                                {% if perms.appGestionDePedidos.delete_componente %}
-                                    <a class="eliminar" href="http://127.0.0.1:8000/deustronic/eliminarComponente/{{componente.pk}}">eliminar</a>
-                                {% endif %}
-                                <!--Solo se podrá visualizar si se tiene acceso-->
-                                {% if perms.appGestionDePedidos.change_componente %}
-                                    <a class="modificar" href="http://127.0.0.1:8000/deustronic/modificarComponente/{{componente.pk}}">modificar</a>
-                                {% endif %}
-                            </li>
-                        {% endfor %}
-                    </ul>
-                <!--Sacamos un aviso de que no existen componentes en caso de no encontrarlos-->
-                {% else %}
-                    <h4>No existen componentes en Deustronic Components S.L.</h4>
-                    {% if perms.appGestionDePedidos.add_componente %}
-                        <p>Para añadir un componente haga click <a class="añadir" href="{% url 'anyadirComponente' %}">aquí</a></p>
-                    {% endif %}
-                {% endif %}
+                <img height="110" src="{% static 'IMG/producto1.png' %}" alt="producto1" />
+
+
             </div>
-        </article>
-    {% else %}
+
+            <div class="cuadrado">
+
+                <img height="110" src="{% static 'IMG/producto2.png' %}" alt="producto2" />
+
+
+            </div>
+
+            <div class="cuadrado">
+
+                <img height="110" src="{% static 'IMG/producto3.png' %}" alt="producto3" />
+
+
+            </div>
+
+            <div class="cuadrado">
+
+                <img height="110" src="{% static 'IMG/producto4.jpg' %}" alt="prodcuto4" />
+
+
+            </div>
+
+            <div class="cuadrado">
+
+                <img height="110" src="{% static 'IMG/producto7.png' %}" alt="producto5" />
+
+
+            </div>
+
+            <div class="cuadrado">
+
+                <img height="110" src="{% static 'IMG/producto6.png' %}" alt="producto6" />
+
+
+            </div>
+
+
+        </div>
+
+        <div id="bloque_final">
+
+
+            <h1 class="titular"> Comprometidos con el medio ambiente: </h1>
+
+                <p class="container_parrafo">Para Deustronic Components S.L. la sostenibilidad no es un proyecto, sino una actitud y un camino hacia un futuro mejor. Los caminos hacia la sostenibilidad son tan diversos como nuestros clientes y empleados...Por ello 
+                    estamos comprometidos con las personas, la sociedad y el medio ambiente. Para disfrutar de una vida mejor y llena de oportunidades. Vayamos juntos a por el "Better Way". Para implementar esta promesa de sostenibilidad de una forma transparente, 
+                    hemos creado la etiqueta Better Way, bajo la cual, agrupamos todo lo relacionado con la sostenibilidad, la sociedad y la protección del medioambiente. </p>
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+    </main>
+    
+
+        
+              
+                   
+       
+                
+         
+
+
 
     {% endif %}
-{% endblock %}
+{% endblock %} <!-- mantener-->
