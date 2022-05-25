@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h2>Ponte en contacto con nosotros, te solucionamos cualquier duda:</h2> <br>
+
+<!-- creamos el formulario para rellenar los campos del correo -->
+
+<form action="#" method="post" id="correo">
+    {% csrf_token %}
+    
+        <label>
+
+            <p class="camposCorreo">Escribe tu correo aquí:</p>
+
+                <input class="emailCorreo" type="text" name="mail" id="mailInput" placeholder="ejemplo@gmail.com">
+        </label>
+    
+    
+            <p class="camposCorreo">Indica el tipo de cliente que eres: </p>
+
+                <input type="radio" name="tipo_cliente" value="particular" checked> Soy particular<br>
+                <input type="radio" name="tipo_cliente" value="empresa" checked> Soy empresa<br>
+
+
+            <p class="camposCorreo">¿Cual es tu país de residencia?</p>
+
+            <select id="groups" name="groups"> 
+                  
+                <option>Italia</option>
+                <option selected>España</option>
+                <option>Francia</option>
+                <option>Mexico</option>
+                <option>Argentina</option>
+                   
+            </select>
+
+            <p>Escribe aquí tu mensaje</p>
+            
+            <textarea name="textarea" rows="5" cols="50" maxlength="500" placeholder="Escriba aquí su mensaje">
+
+                
+            </textarea>
+
+</form>
+
+
+
+
+
+
+
+<nav class="navbar navbar-light bg-light fixed-bottom">
+    <button class="enviar_correo" type="submit" form="correo">Enviar</button>
+    <button class="volver_correo"
+        onclick="location.href='http://127.0.0.1:8000/admin/'">Volver</button>
+</nav>
+
+
+
+
+
+
+
+{% endblock %}
