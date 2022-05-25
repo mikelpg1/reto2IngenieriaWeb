@@ -95,13 +95,14 @@
 }
 
 /*PIE DE PÁGINA --> IGUAL PARA TODOS*/
-.pie{
+.pie{ /* footer */
+
     background-color: rgba(38, 45, 52, 0.5);
     width: 100%;
     display: flex;
     align-items: center;
     height: 90px;
-    position: fixed;
+    position:static;
     bottom: 0;
 
 }
@@ -229,11 +230,36 @@ main h2{
 
 }
 
-.container_parrafo { /* nueva */
+#container_parrafo { /* nueva */
 
     font-family: "poppins", Arial, Helvetica, sans-serif;
     margin-top: 15px;
     text-align: justify;
+    font-size: 1.25em;
+
+}
+
+#amp_info { /* nueva */
+
+
+    font-family: "poppins", Arial, Helvetica, sans-serif;
+    margin-top: 15px;
+    text-align: justify;
+    font-size: 1.25em;
+
+
+}
+
+#ampliar_boton {
+
+    font-family: "poppins", Arial, Helvetica, sans-serif;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    background-color: rgb(1, 27, 119);
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    transition: background-color 1s;
 
 }
 
@@ -256,6 +282,11 @@ main h2{
 
 
 
+}
+
+#contacto {
+
+    font-size: 1.5em;
 }
 
 /*LISTADO DE PRODUCTOS Y LISTADO DE CLIENTES*/
@@ -453,12 +484,15 @@ main h2{
 
 /*FORMATO DE LA VISUALIZACION DE DETALLE*/
 #botones{
-    margin-left: auto;
+    margin-left: 25px;
+    margin-bottom: 10px;
+   
+
 }
 
 #botones button{
     padding: 12px;
-    border: 0px;
+    border-radius: 10px;
     background-color: rgb(1, 27, 119);
     color: rgb(255, 255, 255);
     text-decoration: none;
