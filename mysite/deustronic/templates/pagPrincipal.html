@@ -115,9 +115,19 @@
 
         <div id="contacto">
 
+            <h2>Nos ponemos en contacto contigo:</h2>
+            <form action="#" method="POST">
 
-    
-            <a href="'http://127.0.0.1:8000/correoElectronico/'">Contactamos contigo</a>
+                {% csrf_token %}
+
+                
+                <input type="text" name='mail' placeholder="ejemplo@gmail.com">
+                <input type="submit" value="Enviar">
+
+            </form>
+
+            <!-- <button id="email">Contactamos contigo</button>  -->
+            
 
             
         </div>

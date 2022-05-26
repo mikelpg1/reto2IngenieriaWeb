@@ -10,6 +10,10 @@ from .forms import *
 from .models import *
 from django.views.generic.edit import DeleteView, UpdateView
 from django.http import HttpResponse
+from django.core.mail import send_mail, EmailMultiAlternatives
+from django.template.loader import get_template
+from django.conf import settings
+
 
 
 # Create your views here.
@@ -208,9 +212,33 @@ class modificarPedidoView(UpdateView):
     fields = ['cantidadproducto', 'precioTotal']
     success_url = reverse_lazy('base')
 
+# vista para el correo electronico #
 
 
+def send_email(mail):
+    context = {'mail':mail}
 
+    template = get_template('envioEmail.html')
+    content = template.render(context)
 
+    email = EmailMultiAlternatives(
 
+        'Un correo de DEUSTRONIC',
+        'Deustronic Components S.L.',
+        settings.EMAIL_HOST_USER,
+        [mail]
+
+    )
+
+    email.attach_alternative(content, 'text/html')
+    email.send()
+
+def enviarMail(request):
+
+    if request.method == 'POST':
+        mail = request.POST.get('mail')
+
+        send_email(mail)
+
+    return render(request, 'pagPrincipal.html, {}')
 
