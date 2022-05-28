@@ -34,7 +34,7 @@ urlpatterns = [
     path('listadoPedido', views.listadoPedido, name='listadoPedido'),
     path('listadoCliente', views.listadoCliente, name='listadoCliente'),
 
-    path('envioEmail',views.index, name='envioEmail'),
+    path('envioEmail',views.enviarCorreo, name='envioEmail'),
 
 
 

@@ -216,30 +216,30 @@ class modificarPedidoView(UpdateView):
 # vista para el correo electronico #
 
 
-def index(request):
+def enviarCorreo(request):
 
     if request.method == 'POST':
-        name = request.POST.get('full-name')
+        nombre = request.POST.get('nombre')
         email = request.POST.get('email')
-        subject = request.POST.get('subject')
-        message = request.POST.get('message')
+        asunto = request.POST.get('asunto')
+        mensaje = request.POST.get('mensaje')
 
         data = {
                 
-                'name' : name,
+                'name' : nombre,
                 'email' : email,
-                'subject' : subject,
-                'message' : message
+                'asunto' : asunto,
+                'mensaje' : mensaje
         }
 
-        message = '''
-        New message: {}
+        mensaje = '''
+        Nuevo mensaje: {}
 
-        From: {}
+        Del usuario: {}
         
         
-        '''.format(data['message'], data['email'])
-        send_mail(data['subject'], message, '', ['deustronic.components@gmail.com'])
+        '''.format(data['mensaje'], data['email'])
+        send_mail(data['asunto'], mensaje, '', ['deustronic.components@gmail.com'])
 
       
         

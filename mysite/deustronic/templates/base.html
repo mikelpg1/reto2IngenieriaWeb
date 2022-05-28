@@ -45,7 +45,7 @@
     <main>
         {% if user.is_authenticated%}
         {% else %}
-            <h1>Usted no esta logueado</h1>
+            <h1>Usted no esta logueado, inicie sesión para ver el contenido</h1>
         {% endif %}
         <!--Bloque en el que se visualiza la informacion y va variando en funcion al html cargado.-->
         {% block content %}{% endblock %}

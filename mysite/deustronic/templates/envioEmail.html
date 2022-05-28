@@ -10,23 +10,24 @@
 <!--Comprobamos que hayan usuarios autenticados-->
         {% if user.is_authenticated %}
 
+       
+
         <div id="contacto">
 
-                <h2>Nos ponemos en contacto contigo:</h2>
-
-                <form action="" method="POST">
+                <p id="intro_contacto">Desde esta sección puedes contactarnos con <br>cualquier duda o sugerencia:</p>
+                <form action="" id="contactarEmail" method="POST">
     
                     {% csrf_token %}
     
-                    <p>Nombre completo:</p>
-                    <input type="text" name="full-name">
-                    <p>Direccion email:</p>
+                    <p class="campo_correo">Nombre completo:</p>
+                    <input type="text" name="nombre">
+                    <p class="campo_correo">Direccion email:</p>
                     <input type="text" name='email' placeholder="ejemplo@gmail.com">
-                    <p>Asunto:</p>
-                    <input type="text" name="subject">
-                    <p>Escribe aquí tus dudas/sugerencias:</p>
-                    <textarea name="message" cols="30" rows="10"></textarea>
-                    <input type="submit" value="Send Mesagge">
+                    <p class="campo_correo">Asunto:</p>
+                    <input type="text" name="asunto">
+                    <p class="campo_correo">Escribe aquí tus dudas/sugerencias:</p>
+                    <textarea name="mensaje" cols="30" rows="10"></textarea>
+                    <input type="submit" id="enviar_correo" value="ENVIAR">
     
                 </form>
                 
