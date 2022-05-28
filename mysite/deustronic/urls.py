@@ -34,8 +34,10 @@ urlpatterns = [
     path('listadoPedido', views.listadoPedido, name='listadoPedido'),
     path('listadoCliente', views.listadoCliente, name='listadoCliente'),
 
-    path('pagPrincipal.html/', views.enviarMail, name='pagPrincipal.html'),
-    path('envioEmail.html/', views.send_email, name='envioEmail.html'),
+    path('envioEmail',views.index, name='envioEmail'),
+
+
+
     
 
 ]

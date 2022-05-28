@@ -23,6 +23,7 @@
                     <li><a href="{% url 'listadoPedido' %}">PEDIDOS</a></li>
                     <li><a href="{% url 'listadoComponente' %}">COMPONENTES</a></li>
                     <li><a href="{% url 'listadoCliente' %}">CLIENTES</a></li>
+                    <li><a href="{% url 'envioEmail' %}">CONTACTO</a></li> <!-- para el correo electronico-->
 
                     {% if user.is_authenticated %}
                         <li><a href= "">{{user.username}}</a>

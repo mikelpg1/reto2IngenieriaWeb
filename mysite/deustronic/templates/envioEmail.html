@@ -1,8 +1,45 @@
-<html>
+<!--Heredamos todos los elementos de base.html-->
+{% extends "base.html" %}
+{% load static %}
 
-        <h1>Hola {{ mail }} , le atendemos desde DEUSTRONIC S.L</h1>
 
-        <p>Este mensaje se envia desde Django, haganos llegar cualquier tipo de duda/sugerencia</p>
+
+<!--Contenido de la página donde se visualizarán los datos de contacto-->
+{% block content %}
     
-</html>
+<!--Comprobamos que hayan usuarios autenticados-->
+        {% if user.is_authenticated %}
+
+        <div id="contacto">
+
+                <h2>Nos ponemos en contacto contigo:</h2>
+
+                <form action="" method="POST">
+    
+                    {% csrf_token %}
+    
+                    <p>Nombre completo:</p>
+                    <input type="text" name="full-name">
+                    <p>Direccion email:</p>
+                    <input type="text" name='email' placeholder="ejemplo@gmail.com">
+                    <p>Asunto:</p>
+                    <input type="text" name="subject">
+                    <p>Escribe aquí tus dudas/sugerencias:</p>
+                    <textarea name="message" cols="30" rows="10"></textarea>
+                    <input type="submit" value="Send Mesagge">
+    
+                </form>
+                
+        </div>
+    
+    
+
+        
+        
+
+
+
+        {% endif %}
+
+{% endblock %}
 

@@ -10,9 +10,10 @@ from .forms import *
 from .models import *
 from django.views.generic.edit import DeleteView, UpdateView
 from django.http import HttpResponse
-from django.core.mail import send_mail, EmailMultiAlternatives
+from django.core.mail import send_mail
 from django.template.loader import get_template
 from django.conf import settings
+
 
 
 
@@ -215,30 +216,41 @@ class modificarPedidoView(UpdateView):
 # vista para el correo electronico #
 
 
-def send_email(mail):
-    context = {'mail':mail}
-
-    template = get_template('envioEmail.html')
-    content = template.render(context)
-
-    email = EmailMultiAlternatives(
-
-        'Un correo de DEUSTRONIC',
-        'Deustronic Components S.L.',
-        settings.EMAIL_HOST_USER,
-        [mail]
-
-    )
-
-    email.attach_alternative(content, 'text/html')
-    email.send()
-
-def enviarMail(request):
+def index(request):
 
     if request.method == 'POST':
-        mail = request.POST.get('mail')
+        name = request.POST.get('full-name')
+        email = request.POST.get('email')
+        subject = request.POST.get('subject')
+        message = request.POST.get('message')
 
-        send_email(mail)
+        data = {
+                
+                'name' : name,
+                'email' : email,
+                'subject' : subject,
+                'message' : message
+        }
 
-    return render(request, 'pagPrincipal.html, {}')
+        message = '''
+        New message: {}
+
+        From: {}
+        
+        
+        '''.format(data['message'], data['email'])
+        send_mail(data['subject'], message, '', ['deustronic.components@gmail.com'])
+
+      
+        
+    return render(request, 'envioEmail.html', {})
+
+
+
+
+
+
+
+
+
 
