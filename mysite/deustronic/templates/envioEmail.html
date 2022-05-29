@@ -2,15 +2,11 @@
 {% extends "base.html" %}
 {% load static %}
 
-
-
 <!--Contenido de la página donde se visualizarán los datos de contacto-->
 {% block content %}
     
 <!--Comprobamos que hayan usuarios autenticados-->
         {% if user.is_authenticated %}
-
-       
 
         <div id="contacto">
 
@@ -26,19 +22,12 @@
                     <p class="campo_correo">Asunto:</p>
                     <input type="text" name="asunto">
                     <p class="campo_correo">Escribe aquí tus dudas/sugerencias:</p>
-                    <textarea name="mensaje" cols="30" rows="10"></textarea>
+                    <textarea name="mensaje" cols="30" rows="10"></textarea></br></br></br>
                     <input type="submit" id="enviar_correo" value="ENVIAR">
     
                 </form>
                 
         </div>
-    
-    
-
-        
-        
-
-
 
         {% endif %}
 

@@ -20,103 +20,60 @@
         <h2 id="titulo_inicial">¡BIENVENIDO A DEUSTRONIC!</h2>
     </header>
     
-    
     <!--Comprobamos que hayan usuarios autenticados-->
     {% if user.is_authenticated %} 
-
     <main>
-
         <!--SECCION DE INTRODUCCION -->
-
         <div id="introduccion">
-
-
             <h1 class="titular"> ¿Quienes somos? </h1>
-
                 <p id="container_parrafo">Deustronic Components S.L. es una empresa especializada en fabricación de productos electronicos, integración de sistemas de seguridad, con ingeniería y desarrollo propio, lo que nos permite adaptar nuestras soluciones 
                     a las necesidades del cliente. En Deustronic S.L. llevamos más de 30 años ofreciendo seguridad a medida. Desarrollamos y fabricamos nuestros propios controles de acceso, por lo que podemos adaptarnos a todas las necesidades que les puedan surgir 
                     a nuestros clientes. <br><br> Ofrecemos los medios necesarios para facilitar un entorno laboral seguro, proporcionando la última tecnología a nuestro alcance tanto en Hardware como en Software. Nos gustan los retos y por eso nos embarcamos en proyectos 
                     ambiciosos en nichos de mercado que entendemos como prioritarios y donde aportamos más valor: las Infraestructuras Críticas.</p>
-
         </div>
 
         <!--SECCION DE FOTOS -->
-
         <div id="seccion_fotos">
-           
-            
-
             <h1 class="titular"> Nuestros productos estrella: </h1>
-
             <div class="cuadrado">
-
                 <img height="110" src="{% static 'IMG/producto1.png' %}" alt="producto1" />
-
-
             </div>
-
             <div class="cuadrado">
-
                 <img height="110" src="{% static 'IMG/producto2.png' %}" alt="producto2" />
-
-
             </div>
-
             <div class="cuadrado">
-
                 <img height="110" src="{% static 'IMG/producto3.png' %}" alt="producto3" />
-
-
             </div>
-
             <div class="cuadrado">
-
                 <img height="110" src="{% static 'IMG/producto4.jpg' %}" alt="prodcuto4" />
-
-
             </div>
-
             <div class="cuadrado">
-
                 <img height="110" src="{% static 'IMG/producto7.png' %}" alt="producto5" />
-
-
             </div>
-
             <div class="cuadrado">
-
                 <img height="110" src="{% static 'IMG/producto6.png' %}" alt="producto6" />
-
-
             </div>
-
-
         </div>
 
         <div id="bloque_final">
-
-
             <h1 class="titular"> Comprometidos con el medio ambiente: </h1>
-
                 <p id = "amp_info">Para Deustronic Components S.L. la sostenibilidad no es un proyecto, sino una actitud y un camino hacia un futuro mejor. Los caminos hacia la sostenibilidad son tan diversos como nuestros clientes y empleados...Por ello 
                     estamos comprometidos con las personas, la sociedad y el medio ambiente. Para disfrutar de una vida mejor y llena de oportunidades. Vayamos juntos a por el "Better Way". Para implementar esta promesa de sostenibilidad de una forma transparente, 
                     hemos creado la etiqueta Better Way, bajo la cual, agrupamos todo lo relacionado con la sostenibilidad, la sociedad y la protección del medioambiente.  
                 </p>
-
         <div id="boton_info">
-            
             <button id="ampliar_boton">Mas informacion</button>
-    
-        </div>        
-
         </div>
 
-        <script src="{% static '/js/ampliarInformacion.js' %}"></script>
-
-
-
+        <div id="botones">
+            <button id="aumentarTamaño">Aumentar Tamaño</button>
+            <button id="bajarTamaño">Bajar Tamaño </button>
+        </div>
 
     </main>
 
+    <script src="{% static '/js/ampliarInformacion.js' %}"></script>
+    <script src="{% static '/js/cambiarTamano.js' %}"></script>
+
     {% endif %}
-{% endblock %} <!-- mantener-->
+{% endblock %} 

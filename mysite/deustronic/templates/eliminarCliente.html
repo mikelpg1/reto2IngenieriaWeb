@@ -14,7 +14,7 @@
         <form class="acciones" method="POST" action=".">
             {% csrf_token %}
             <p>Está seguro que desea eliminar: {{ cliente.nombre }}?</p>
-            <input type="submit" value="Eliminar">
+            <input class= "boton_env_el" type="submit" value="Eliminar">
         </form>
     </div>
 {% endblock %}

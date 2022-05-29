@@ -3,7 +3,8 @@ from . import views
 from deustronic.views import *
 
 urlpatterns = [
-    path('inicio', views.inicio, name='base'),
+    path('inicio', inicio, name='base'),
+
     #path('iniciarSesion', views.iniciarSesion, name = 'iniciarSesion'),
     
     path('anyadirPedidoProducto', anyadirPedidoView.as_view(), name='anyadirPedidoProducto'),

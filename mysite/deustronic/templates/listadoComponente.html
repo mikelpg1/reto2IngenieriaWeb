@@ -23,46 +23,40 @@
             
             <div class="listadosContenido">
                 <div class="busqueda">
-                    <form class="busqueda" method="post" action="buscarComponente/">
-                        {% csrf_token %}
-                        <input class="input" type="text" name="lupa" class="search-query" placeholder="Buscar nombre del componente">
-                        <button class="boton" type="submit"><img src="{% static 'IMG/lupa.png' %}" alt="Lupa"></button>
-                    </form>
-                </div>
-                <!--Comprobamos si existen componentes en nuestra BBDD-->
-                {% if componentes %}
-                    <ul>
-                        <!--Recorremos todos los componentes existentes y los visualizamos como una lista no ordenada <ul>-->
-                        {% for componente in componentes %}
-                            <li>
-                                <span>{{componente.pk}}</span>{{componente.nombre}}
-                                <!--Solo se podrá visualizar si se tiene acceso-->
-                                {% if perms.appGestionDePedidos.view_componente %}
-                                    <a class="detalles" href="http://127.0.0.1:8000/deustronic/detalleComponente/{{componente.pk}}">detalles</a>
-                                {% endif %}
-                                <!--Solo se podrá visualizar si se tiene acceso-->
-                                {% if perms.appGestionDePedidos.delete_componente %}
-                                    <a class="eliminar" href="http://127.0.0.1:8000/deustronic/eliminarComponente/{{componente.pk}}">eliminar</a>
-                                {% endif %}
-                                <!--Solo se podrá visualizar si se tiene acceso-->
-                                {% if perms.appGestionDePedidos.change_componente %}
-                                    <a class="modificar" href="http://127.0.0.1:8000/deustronic/modificarComponente/{{componente.pk}}">modificar</a>
-                                {% endif %}
-                            </li>
-                        {% endfor %}
-                    </ul>
-                <!--Sacamos un aviso de que no existen componentes en caso de no encontrarlos-->
-                {% else %}
-                    <h4>No existen componentes en Deustronic Components S.L.</h4>
-                    {% if perms.appGestionDePedidos.add_componente %}
-                        <p>Para añadir un componente haga click <a class="añadir" href="{% url 'anyadirComponente' %}">aquí</a></p>
+                
+                    <!--Comprobamos si existen componentes en nuestra BBDD-->
+                    {% if componentes %}
+                        <ul>
+                            <!--Recorremos todos los componentes existentes y los visualizamos como una lista no ordenada <ul>-->
+                            {% for componente in componentes %}
+                                <li>
+                                    <span>{{componente.pk}}</span>{{componente.nombre}}
+                                    <!--Solo se podrá visualizar si se tiene acceso-->
+                                    {% if perms.appGestionDePedidos.view_componente %}
+                                        <a class="detalles" href="http://127.0.0.1:8000/deustronic/detalleComponente/{{componente.pk}}">detalles</a>
+                                    {% endif %}
+                                    <!--Solo se podrá visualizar si se tiene acceso-->
+                                    {% if perms.appGestionDePedidos.delete_componente %}
+                                        <a class="eliminar" href="http://127.0.0.1:8000/deustronic/eliminarComponente/{{componente.pk}}">eliminar</a>
+                                    {% endif %}
+                                    <!--Solo se podrá visualizar si se tiene acceso-->
+                                    {% if perms.appGestionDePedidos.change_componente %}
+                                        <a class="modificar" href="http://127.0.0.1:8000/deustronic/modificarComponente/{{componente.pk}}">modificar</a>
+                                    {% endif %}
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    <!--Sacamos un aviso de que no existen componentes en caso de no encontrarlos-->
+                    {% else %}
+                        <h4>No existen componentes en Deustronic Components S.L.</h4>
+                        {% if perms.appGestionDePedidos.add_componente %}
+                            <p>Para añadir un componente haga click <a class="añadir" href="{% url 'anyadirComponente' %}">aquí</a></p>
+                        {% endif %}
                     {% endif %}
-                {% endif %}
+                </div>
             </div>
         </article>
 
-    {% else %}
-
-    {% endif %}
+        {% endif %}
 {% endblock %}
 

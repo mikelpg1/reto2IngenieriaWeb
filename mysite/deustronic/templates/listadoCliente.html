@@ -2,8 +2,6 @@
 {% extends "base.html" %}
 {% load static %}
 
-
-
 <!--Contenido de la página donde se visualizarán todos los listados-->
 {% block content %}
     
@@ -11,58 +9,52 @@
     <!--Comprobamos que hayan usuarios autenticados-->
         {% if user.is_authenticated %}
         <!--Primer articulo donde se visualizara el listado de cliente.-->
-        <article class="listados" id="listadosIzq">
+        <article class="listados" id="listados">
             <header>
                 <div class="listadostitulo">
                         <h3>LISTADO DE CLIENTES</h3>
                             {% if perms.appGestionDePedidos.add_cliente %}
                               <a class="añadir" href="http://127.0.0.1:8000/deustronic/anyadirCliente">+</a>
                             {% endif %}
-                </div> 
+                </div>
+            </header>
+        </article>
     </header>
 
             <div class="listadosContenido">
                 <div class="busqueda">
-                    <form class="busqueda" id="formularioBusqueda" method="post" action="buscarCliente/">
-                        {% csrf_token %}
-                        <input class="input" type="text" name="lupa" class="search-query" placeholder="Buscar nombre del cliente">
-                        <button class="boton" type="submit"><img src="{% static 'IMG/lupa.png' %}" alt="Lupa"></button>
-                    </form>
-                </div>
                 <!--Comprobamos si existen clientes en nuestra BBDD-->
-                {% if clientes %}
-                    <ul>
-                        <!--Recorremos todos los clientes existentes y los visualizamos como una lista no ordenada <ul>-->
-                        {% for cliente in clientes %}
-                            <li>
-                                <span>{{cliente.pk}}</span>{{cliente.nombreEmpresa}}
-                                <!--Solo se podrá visualizar si se tiene acceso-->
-                                {% if perms.appGestionDePedidos.view_cliente %}
-                                    <a class="detalles" href="http://127.0.0.1:8000/deustronic/detalleCliente/{{cliente.pk}}/">detalles</a>
-                                {% endif %}
-                                <!--Solo se podrá visualizar si se tiene acceso-->
-                                {% if perms.appGestionDePedidos.delete_cliente %}
-                                    <a class="eliminar" href="http://127.0.0.1:8000/deustronic/eliminarCliente/{{cliente.pk}}/">eliminar</a>
-                                {% endif %}
-                                <!--Solo se podrá visualizar si se tiene acceso-->
-                                {% if perms.appGestionDePedidos.change_cliente %}
-                                    <a class="modificar" href="http://127.0.0.1:8000/deustronic/modificarCliente/{{cliente.pk}}">modificar</a>
-                                {% endif %}
-                            </li>
-                        {% endfor %}
-                    </ul>
-                <!--Sacamos un aviso de que no existen clientes en caso de no encontrarlos-->
-                {% else %}
-                    <h4>No existen clientes en Deustronic Components S.L.</h4>
+                    {% if clientes %}
+                        <ul>
+                            <!--Recorremos todos los clientes existentes y los visualizamos como una lista no ordenada <ul>-->
+                            {% for cliente in clientes %}
+                                <li>
+                                    <span>{{cliente.pk}}</span>{{cliente.nombreEmpresa}}
+                                    <!--Solo se podrá visualizar si se tiene acceso-->
+                                    {% if perms.appGestionDePedidos.view_cliente %}
+                                        <a class="detalles" href="http://127.0.0.1:8000/deustronic/detalleCliente/{{cliente.pk}}/">detalles</a>
+                                    {% endif %}
+                                    <!--Solo se podrá visualizar si se tiene acceso-->
+                                    {% if perms.appGestionDePedidos.delete_cliente %}
+                                        <a class="eliminar" href="http://127.0.0.1:8000/deustronic/eliminarCliente/{{cliente.pk}}/">eliminar</a>
+                                    {% endif %}
+                                    <!--Solo se podrá visualizar si se tiene acceso-->
+                                    {% if perms.appGestionDePedidos.change_cliente %}
+                                        <a class="modificar" href="http://127.0.0.1:8000/deustronic/modificarCliente/{{cliente.pk}}">modificar</a>
+                                    {% endif %}
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    <!--Sacamos un aviso de que no existen clientes en caso de no encontrarlos-->
+                    {% else %}
+                        <h4>No existen clientes en Deustronic Components S.L.</h4>
                     
-                    {% if perms.appGestionDePedidos.add_cliente %}
-                        <p>Para añadir un cliente haga click <a class="añadir" href="{% url 'anyadirCliente' %}">aquí</a></p>
+                        {% if perms.appGestionDePedidos.add_cliente %}
+                            <p>Para añadir un cliente haga click <a class="añadir" href="{% url 'anyadirCliente' %}">aquí</a></p>
+                        {% endif %}
                     {% endif %}
-                {% endif %}
+                </div>
             </div>
         </article>
-
-    {% else %}
-
-    {% endif %}
+        {% endif %}
 {% endblock %}

@@ -2,7 +2,7 @@
 
 {% block content %}
     
-    <h2>Log In</h2>
+    <h2 class="titulolog">Log In</h2>
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
@@ -33,6 +33,7 @@
     <form method="post" action="{% url 'login' %}">
     {% csrf_token %}
 
+
     <div>
         <td>{{ form.username.label_tag }}</td>
         <td>{{ form.username }}</td>
@@ -49,7 +50,7 @@
     </form>
 
     {# Assumes you setup the password_reset view in your URLconf #}
-    <p><a href="{% url 'password_reset' %}">Lost password?</a></p>
+    <p><a href="{% url 'password_reset' %}">Has perdido la contraseña?</a></p>
     {% endcomment %}
 
 {% endblock %}

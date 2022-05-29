@@ -10,7 +10,6 @@
 .nav-fijado{
     width: 100%;
     position: fixed;
-    z-index: 1;
     border-bottom: 2px solid rgb(241, 241, 241);
     background-color: rgb(23, 89, 175);
 }
@@ -20,6 +19,9 @@
     margin-right: auto;
     font-family: "calibri";
     width: 100%;
+}
+.menu li{
+    display: inline-block;
 }
 
 .menu img{
@@ -35,34 +37,19 @@
     padding-right: 20px;
     float: right;
 }
-.menu li{
-    display: inline-block;
-}
 
 .menu li a {
     text-decoration: none;
     color: rgb(255, 255, 255);  
-    font-size: 1rem;
-    padding-top: 30px;
-    padding-right: 15px;
-    transition: color 0.4s;
-    display: table-cell;
-    vertical-align: middle;
-}
-
-.menu li p {
-    text-decoration: none;
-    color: rgb(255, 255, 255);  
     font-size: 15px;
-    padding-top: 35px;
-    padding-right: 15px;
     display: table-cell;
     vertical-align: middle;
+    padding-top: 28px;
+    padding-right: 13px;
+    transition: color 0.6s;
+
 }
 
-.menu #saludo-usuario{
-    font-size: 13px;
-}
 
 .menu > li{
     float: right;
@@ -73,7 +60,7 @@
 }
 
 .menu ul li ul {
-    /*Organizacion de lista anidada*/
+    /*Organizacion de lista anidada en login*/
     position: absolute;
     visibility: hidden;
 }
@@ -103,38 +90,13 @@
     align-items: center;
     height: 90px;
     position:static;
-    bottom: 0;
 
 }
 
 .pie #redes {
     display: block;
     margin: 0px auto;
-    text-align: cen;
-}
-
-.pie #saberMas{
     text-align: center;
-    width: 700px;
-    padding: 10px;
-    font-family: "poppins", Arial, Helvetica, sans-serif;
-    font-size: 15px;
-    color: gainsboro;
-}
-
-.pie #saberMas button{
-    padding: 3px;
-}
-
-.pie #textoMasInfo{
-    padding: 5px;
-    text-align: justify;
-    margin-left: 80px;
-}
-
-.pie #textoMasInfo ul {
-    list-style: circle inside;
-    margin-left: 10px;
 }
 
 .pie img{
@@ -151,28 +113,28 @@ body {
 main{
     min-height: 521px;
     height: 100%;
-    padding: 15px;
+    padding: 13px;
 }
 
 main h2{
-    padding: 20px;
+    padding: 22px;
     font-family: "poppins", Arial, Helvetica, sans-serif;
     font-size: 1em;
     color: black;
 }
 
-    /*TÍTULO (H2) Y LÍNEA (HR) DE LAS PÁGINAS SECUNDARIAS*/
-    .pagSecundarias{
+/*TÍTULO (H2) Y LÍNEA (HR) DE LAS PÁGINAS SECUNDARIAS*/
+.pagSecundarias{
         padding-top: 100px;
-    }
+}
 
-    hr{
-        margin: auto;
-        margin-top: -15px;
-        height: 5px;
-        width: 99%;
-        background-color: black;
-    }
+hr{
+    margin: auto;
+    margin-top: -15px;
+    height: 5px;
+    width: 99%;
+    background-color: black;
+}
 
 
 /* PÁG. PRINCIPAL*/
@@ -186,22 +148,13 @@ main h2{
     background-size: contain;
     width: auto;
     background-attachment: fixed;
-    background-repeat: no-repeat;
-    
+    background-repeat: no-repeat;   
 }
 
-#cabecera-pag-princ #titulo{
-    
+#cabecera-pag-princ #titulo{ 
     text-align: center;
     padding-top: 110px;
     padding-bottom: 0px;
-}
-
-#cabecera-pag-princ img{
-
-    
-    padding-top: 0px;
-
 }
 
 #cabecera-pag-princ h1{
@@ -219,39 +172,29 @@ main h2{
 }
 
 #titulo_inicial { /* nueva */
-
     font-size: 2em;
 }
 
 .titular{ /* nueva */
-
     font-family: "montserrat", Arial, Helvetica, sans-serif;
     font-size: 2em;
-
 }
 
 #container_parrafo { /* nueva */
-
     font-family: "poppins", Arial, Helvetica, sans-serif;
     margin-top: 15px;
     text-align: justify;
     font-size: 1.25em;
-
 }
 
 #amp_info { /* nueva */
-
-
     font-family: "poppins", Arial, Helvetica, sans-serif;
     margin-top: 15px;
     text-align: justify;
     font-size: 1.25em;
-
-
 }
 
 #ampliar_boton {
-
     font-family: "poppins", Arial, Helvetica, sans-serif;
     margin-top: 20px;
     margin-bottom: 20px;
@@ -260,16 +203,13 @@ main h2{
     color: rgb(255, 255, 255);
     text-decoration: none;
     transition: background-color 1s;
-
 }
 
 #introduccion { /* nueva */
-
     margin-bottom: 30px;
 }
 
-.cuadrado { /* nueva */
-    
+.cuadrado { /* nueva */  
     display: inline-flex;
     margin-right: 30px;
     margin-left: 40px;
@@ -277,86 +217,65 @@ main h2{
 }
 
 #bloque_final {  /* nueva */
-
     margin-top: 30px;
-
-
-
 }
 
 #contacto { /* para el apartado de correo electronico */
-
     font-size: 1.2em;
     margin-top: 90px;
     margin-bottom: 30px;
     margin-left: 370px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-
 }
 
 #enviar_correo {  /* para el apartado de correo electronico */
+    font-size: 15px;
+    padding: 4px;
+    background-color: #7db7f46e;
+    border: black solid 2px;
+    border-radius: 2px;
+    font-weight: bold;
+}
 
-    background-color:#88D5E9;
-    margin-left:30px;
-    font-size: 1em;
-    
+#enviar_correo:hover{
+    background-color: #3c71aa;
+    transition: background-color 0.5s;
 }
 
 #intro_contacto{  /* para el apartado de correo electronico */
-
-    
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin-bottom: 10px;
     font-size: 1.5em;
     text-align: left;
-    
-
 }
 
-.campo_correo { /* para el apartado de correo electronico */
-
-    
+.campo_correo { /* para el apartado de correo electronico */ 
     margin-left: 0px;
     text-align: inherit;
     color:darkblue;
-
-
 }
 
-/*form[id=contactarEmail] { 
 
-    color: red;
-  
-} */
 
-/*LISTADO DE PRODUCTOS Y LISTADO DE CLIENTES*/
-#listados{
-    float: center;
-    width: 100%;
-    height: auto;
-    margin-left: 10px;
-}
+
+
+/*LISTADOS DE TODAS LAS PAGINAS*/
 
 .listadostitulo{
     margin-top: 80px;
 }
-
-
-/*FORMATO DE LISTADOS -> IGUAL PARA TODOS LOS LISTADOS*/
-
 .listados header{
     padding: 30px;
     float: left;
     font-family: "montserrat";
-    font-size: 1em;
+    font-size: 25px;
     color: #6a9eda;
 }
 
 .listadosContenido ul{
-    height: 300px;
+    height: 250px;
     overflow:hidden; 
-
-
+    padding-top: 70px;
 }
 
 
@@ -364,11 +283,10 @@ main h2{
 .listadosContenido {
     height: 300px;
     margin-bottom: 15px;
-    padding: 100px;
-    justify-content: center;
+    padding: 80px;
     align-items: center;
-    font-family: Calibri, Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 0.8em;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 18px;
 }
 
 .listadosContenido ul li {
@@ -384,15 +302,15 @@ main h2{
 }
 
 .listadosContenido ul li span{
-    border: solid 2px black;
-    background-color: rgba(0, 0, 0);
-    color: gainsboro;
+    background-color: #999c9fec;
+    color: rgb(252, 252, 252);
     display: inline-block;
     text-align: center;
     width: auto;
+    padding: 15px;
     padding-top: 5px;
     padding-bottom: 5px;
-    font-size: 13px;
+    font-size: 20px;
     margin-right: 15px;
     margin-left: 10px;
 }
@@ -402,45 +320,15 @@ main h2{
     color: black;
 }
 
-
 .añadir1:hover{
-    color: rgb(194, 4, 4);
+    color: rgb(255, 120, 120);
     transition: color 0.4s;
 }
 
-#sinAcceso{
-    display: block;
-    margin: auto;
-    text-align: center;
-    padding: 20px;
-    padding-top: 60px;
-    font-family: Calibri, Verdana, Geneva, Tahoma, sans-serif;
-}
-
-#sinAcceso h4{
-    font-size: 30px;
-    color: #d1052a;
-}
-
-#sinAcceso p{
-    font-size: 20px;
-    padding: 5px;
-}
-
-#sinAcceso p a{
-    color: black;
-    text-decoration: none;
-    font-weight: 800;
-    transition: color 1s;
-}
-
-#sinAcceso p a:hover{
-    color: rgb(75, 75, 75);
-}
 
 /*BOTON DE ELIMINAR EN LISTADOS*/
 .eliminar{
-    font-size: 0.6em;
+    font-size: 15px;
     float: right;
     margin-right: 15px;
     padding: 3px;
@@ -457,7 +345,8 @@ main h2{
 
 /*BOTON DE MEODIFICAR EN LISTADOS*/
 .modificar{
-    font-size: 0.6em;
+    color: white;
+    font-size: 15px;
     float: right;
     margin-right: 15px;
     padding: 3px;
@@ -474,7 +363,8 @@ main h2{
 
 /*BOTON DE DETALLES EN LISTADOS*/
 .detalles{
-    font-size: 0.6em;
+    color: white;
+    font-size: 15px;
     float: right;
     margin-right: 15px;
     padding: 3px;
@@ -495,45 +385,30 @@ main h2{
     margin-right: 15px;
     padding: 3px;
     font-weight: bold;
-    font-size: 1.3em;
+    font-size: 55px;
     text-decoration: none;
-    color: #88D5E9;
+    color: #fb0d05;
 }
 
 #header h1 { display:inline; }
 
 
-
-
 /*POSICION DE LOS LISTADOS*/
-.listadosContenido h4{
-    text-align: center;
-    padding-top: 80px;
-}
-
-.listadosContenido p{
-    text-align: center;
-    padding-top: 10px;
-}
-
-.listadosContenido p a{
-    font-size: 20px;
-    font-weight: 800;
-}
 
 
 /*FORMATO DE LA VISUALIZACION DE DETALLE*/
+
 #botones{
     margin-left: 25px;
     margin-bottom: 10px;
-   
-
 }
 
+/*BOTON AUMENTAR Y BAJAR TAMAÑO*/
+
 #botones button{
-    padding: 12px;
+    padding: 6px;
     border-radius: 10px;
-    background-color: rgb(1, 27, 119);
+    background-color: rgb(56, 86, 194);
     color: rgb(255, 255, 255);
     text-decoration: none;
     transition: background-color 1s;
@@ -544,47 +419,46 @@ main h2{
     background-color: rgb(85, 84, 84);
 }
 
+/*FORMATO DE LA TABLA DE LOS DETALLES*/
+
 .detalle{
     padding: 30px;
     padding-top: 10px;
     width: 55%;
     margin: auto;
 }
-
 .detalle table{
     border-collapse: collapse;
-    border-spacing: 0;
-    box-shadow: 10px 10px 14px 2px rgba(0,0,0,0.47);
-    font-family: "calibri", Verdana, Geneva, Tahoma, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 20px;
-    color: gainsboro;
-    width: 700px;
+    color: rgb(244, 244, 244);
+    width: 100%;
     text-align: left;
-    background-color: rgba(0, 0, 0, 0.65);
+    background-color: rgba(0, 65, 114, 0.529);
 }
 
 .detalle tr{
-    transition: background-color 1s;
+    transition: background-color 0.5s;
 }
 
 .detalle tr:hover{
-    background-color: rgba(0, 0, 0, 0.8);
-    transition: background-color 1s;
+    background-color: rgba(159, 159, 159, 0.8);
+    transition: background-color 2s;
 }
 
 .detalle th, td{
-    padding: 20px;
+    padding: 30px;
 }
 
 .detalle p a{
-    font-weight: 800;
+    font-weight: 1000;
     text-decoration: none;
-    color: gainsboro;
+    color: rgb(255, 255, 255);
     transition: color 0.4s;
 }
 
 .detalle a:hover{
-    color: rgb(175, 175, 175);
+    color: rgb(178, 255, 150);
 }
 
 /*FORMATO DE LA VISUALIZACION DE LOS FORMULARIOS*/
@@ -593,14 +467,14 @@ main h2{
     width: 700px;
     margin: auto;
     margin-top: 15px;
-    background-color: rgba(0, 0, 0, .65);
-    color: gainsboro;
+    background-color: rgba(0, 0, 0, 0.559);
+    color: rgb(251, 251, 251);
     font-family: "calibri", Verdana, Geneva, Tahoma, sans-serif;
     box-shadow: 10px 10px 14px 2px rgba(0,0,0,0.47);
 }
 
 .formularios{
-    padding-left: 80px;
+    padding-left: 82px;
 }
 
 .formularios li{
@@ -618,24 +492,14 @@ main h2{
 
 input[type=text], 
 .formularios input[type=date],
-.formularios input[type=number],
 .formularios input[type=email],
 .formularios input[type=password],
+.formularios input[type=number],
+
 textarea, 
 select{
     width: 500px;
-	box-sizing: border-box;
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	border:1px solid #BEBEBE;
 	padding: 7px;
-	margin:0px;
-	-webkit-transition: all 0.30s ease-in-out;
-	-moz-transition: all 0.30s ease-in-out;
-	-ms-transition: all 0.30s ease-in-out;
-	-o-transition: all 0.30s ease-in-out;
-	outline: none;	
-    position: relative;
 }
 
 textarea{
@@ -643,72 +507,37 @@ textarea{
     overflow: scroll;
 }
 
-input[type=text]:focus, 
-.formularios input[type=date]:focus,
-.formularios input[type=number]:focus,
-.formularios input[type=email]:focus,
-.formularios input[type=password]:focus,
-.formularios textarea:focus, 
-.formularios select:focus{
-	-moz-box-shadow: 0 0 8px #88D5E9;
-	-webkit-box-shadow: 0 0 8px #88D5E9;
-	box-shadow: 0 0 8px #88D5E9;
-	border: 1px solid #88D5E9;
-}
 
-.formularios i {
-    height: 20px;
-    width: 25px;
-    margin-top: 7px;
-    position: absolute;
-    right: 400px;
-    opacity: 0;
-}
 
-.formularios .formulario_correcto i {
-    color: #42ab49;
-    opacity: 1;
-}
-
-.formularios .formulario_incorrecto label {
-    color: #d1052a;
-}
-
-.formularios .formulario_incorrecto i {
-    color: #d1052a;
-    opacity: 1;
-    margin-top: 10px;
-}
-
-.formularios .formulario_incorrecto input {
-    border: 3px solid #d1052a;
-}
-
-.formularios .formulario_incorrecto select {
-    border: 3px solid #d1052a;
-}
 
 form p{
-    width: 500px;
-    margin-left: 80px;
-    text-align: center;
+    width: auto;
+    text-align: left;
     padding: 10px;
+    margin-left: 80px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
 }
 
-/*AVISO DE FORMULARIOS*/
-.aviso{
-    color: rgb(231, 65, 65);
+form button{
+    margin-top: 30px;
+    width: auto;
+    color: white;
+    text-align: left;
+    padding: 15px;
+    margin-left: 80px;
+    font-size: 15px;
+    background-color: #0000006e;
+    font-weight: bold;
 }
 
-.autenticacion a {
-    color: gainsboro;
-    text-decoration: underline;
-    transition: color 1s;
+
+form button:hover{
+    background-color: #000000;
+    transition: background-color 0.5s;
 }
 
-.autenticacion a:hover {
-    color: rgb(177, 177, 177);
-}
+
 
 .formularios .required{
     color: rgb(231, 65, 65);
@@ -718,40 +547,47 @@ form p{
 
 /*FORMULARIO BUSQUEDA*/
 .busqueda {
-    text-align: center;
-    padding-top: 75px;
-
-}
-
-.input {
     text-align: left;
-    height: 35px;
+    padding-top: 100px;
+
 }
 
-.boton {
-    padding: 5px;
-    padding-bottom: 7px;
-    border-radius: 5px;
-}
-
-.boton img {
-    height: 17px;
-    width: 20px;
-    display: block;
-    margin: auto;
-}
-
-#textoNoResultado {
-    text-align: left;
-    margin-left: 20px;
-}
 
 /* LISTADO OBJETOS */
 
 #lista{
-
     color: blue;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+}
 
+.titulolog{
+    padding-top: 130px;
+}
+
+.boton_env_any{
+    font-size: 15px;
+    padding: 4px;
+    background-color: #999c9fec;
+    border: black solid 2px;
+    border-radius: 2px;
+    font-weight: bold;
+}
+
+.boton_env_any:hover{
+    background-color: #ffffff;
+    transition: background-color 0.5s;
+}
+
+.boton_env_el{
+    font-size: 15px;
+    padding: 4px;
+    background-color: #f45151ec;
+    border: black solid 2px;
+    border-radius: 2px;
+    font-weight: bold;
+}
+
+.boton_env_el:hover{
+    background-color: #ffffff;
+    transition: background-color 0.5s;
 }

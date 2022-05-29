@@ -16,7 +16,6 @@ from django.conf import settings
 
 
 
-
 # Create your views here.
 def listadoCliente(request):
     cliente = get_list_or_404(Cliente);
@@ -29,19 +28,9 @@ def listadoCliente(request):
 # -- VISTAS DE Listado --  # 
 
 def inicio(request):
-    producto = get_list_or_404(Producto);
-    cliente = get_list_or_404(Cliente);
-    componente = get_list_or_404(Componente);
-    pedido = get_list_or_404(Pedido)
+    return render(request, "pagPrincipal.html")
 
 
-    context = {
-        'productos': producto,
-        'clientes': cliente,
-        'pedidos': pedido,
-        'componentes': componente
-    }
-    return render(request, "pagPrincipal.html", context)
 
 def listadoProducto(request):
     producto = get_list_or_404(Producto)
@@ -52,15 +41,10 @@ def listadoProducto(request):
 
 def listadoPedido(request):
     pedido = get_list_or_404(Pedido)
-    producto = get_list_or_404(Producto)
-
     context = {
         'pedidos': pedido,
-        'productos': producto
     }
     return render(request, "listadoPedido.html", context)
-
-
 
 def listadoComponente(request):
     componente = get_list_or_404(Componente)

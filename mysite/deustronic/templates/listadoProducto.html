@@ -13,62 +13,50 @@
         <article class="listados" id="listadosIzq">
             <header>
                 <div class="listadostitulo">
-                        <h3>LISTADO DE PRODUCTOS</h3>
-                            {% if perms.appGestionDePedidos.add_producto %}
-                              <a class="añadir" href="http://127.0.0.1:8000/deustronic/anyadirProducto">+</a>
-                            {% endif %}
+                    <h3>LISTADO DE PRODUCTOS</h3>
+                        {% if perms.appGestionDePedidos.add_producto %}
+                            <a class="añadir" href="http://127.0.0.1:8000/deustronic/anyadirProducto">+</a>
+                        {% endif %}
                 </div> 
+            </header>
     </header>
 
 
             <div class="listadosContenido">
-                <div class="busqueda">
-                    <form class="busqueda" id="formularioBusqueda" method="post" action="buscarProducto/">
-                        {% csrf_token %}
-                        <input class="input" type="text" name="lupa" class="search-query" placeholder="Buscar nombre del producto">
-                        <button class="boton" type="submit"><img src="{% static 'IMG/lupa.png' %}" alt="Lupa"></button>
-                        
-                    </form>
-                </div>
+                <div class="busqueda">                       
+                    <!--Comprobamos si existen productos en nuestra BBDD-->
+                    {% if productos %}
+                        <ul>
+                            <!--Recorremos todos los productos existentes y los visualizamos como una lista no ordenada <ul>-->
+                            {% for producto in productos %}
+                                <li>
+                                    <span>{{producto.pk}}</span>{{producto.nombre}}
+                                    <!--Solo se podrá visualizar si se tiene acceso-->
+                                    {% if perms.appGestionDePedidos.view_producto %}
+                                        <a class="detalles" href="http://127.0.0.1:8000/deustronic/detalleProducto/{{producto.pk}}/">detalles</a>
+                                    {% endif %}  
+                                    <!--Solo se podrá visualizar si se tiene acceso-->
+                                    {% if perms.appGestionDePedidos.delete_producto %}
+                                        <a class="eliminar" href="http://127.0.0.1:8000/deustronic/eliminarProducto/{{producto.pk}}/">eliminar</a>
+                                    {% endif %} 
+                                    <!--Solo se podrá visualizar si se tiene acceso-->
+                                    {% if perms.appGestionDePedidos.change_producto %}
+                                        <a class="modificar" href="http://127.0.0.1:8000/deustronic/modificarProducto/{{producto.pk}}/">modificar</a>
+                                    {% endif %} 
+                                </li>
+                            {% endfor %}
+                        </ul>
 
-                <!--Comprobamos si existen productos en nuestra BBDD-->
-                {% if productos %}
-                    <ul>
-                        <!--Recorremos todos los productos existentes y los visualizamos como una lista no ordenada <ul>-->
-                        {% for producto in productos %}
-                            <li>
-                                <span>{{producto.pk}}</span>{{producto.nombre}}
-                                <!--Solo se podrá visualizar si se tiene acceso-->
-                                {% if perms.appGestionDePedidos.view_producto %}
-                                    <a class="detalles" href="http://127.0.0.1:8000/deustronic/detalleProducto/{{producto.pk}}/">detalles</a>
-                                {% endif %}  
-                                <!--Solo se podrá visualizar si se tiene acceso-->
-                                {% if perms.appGestionDePedidos.delete_producto %}
-                                    <a class="eliminar" href="http://127.0.0.1:8000/deustronic/eliminarProducto/{{producto.pk}}/">eliminar</a>
-                                {% endif %} 
-                                <!--Solo se podrá visualizar si se tiene acceso-->
-                                {% if perms.appGestionDePedidos.change_producto %}
-                                    <a class="modificar" href="http://127.0.0.1:8000/deustronic/modificarProducto/{{producto.pk}}/">modificar</a>
-                                {% endif %} 
-                            </li>
-                        {% endfor %}
-                    </ul>
-
-                <!--Sacamos un aviso de que no existen productos en caso de no encontrarlos-->
-                {% else %}
-                    <h4>No existen pedidos en Deustronic Components S.L.</h4>
-                    {% if perms.appGestionDePedidos.add_pedido %}
-                        <p>Para añadir un pedido haga click <a class="añadir" href="{% url 'anyadirPedido' %}">aquí</a></p>
+                    <!--Sacamos un aviso de que no existen productos en caso de no encontrarlos-->
+                    {% else %}
+                        <h4>No existen pedidos en Deustronic Components S.L.</h4>
+                        {% if perms.appGestionDePedidos.add_pedido %}
+                            <p>Para añadir un pedido haga click <a class="añadir" href="{% url 'anyadirPedido' %}">aquí</a></p>
+                        {% endif %}
                     {% endif %}
-                {% endif %}
+                </div>
             </div>
         </article>
-
-
-
-
-    {% else %}
-
-    {% endif %}
+        {% endif %}
 {% endblock %}
 
