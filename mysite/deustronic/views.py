@@ -57,7 +57,7 @@ def listadoComponente(request):
 
 
 # AÑADIR CLIENTE #
-class anyadirClienteView(View):
+class AnyadirClienteView(View):
     def get(self, request, *args, **kwargs):
         form = ClienteForm()
         return render(request, 'anyadirCliente.html', {'form': form})
@@ -69,7 +69,7 @@ class anyadirClienteView(View):
             return redirect('base')
         return render(request, 'anyadirCliente.html', {'form': form})
 
-class anyadirProductoView(View):
+class AnyadirProductoView(View):
     def get(self, request, *args, **kwargs):
         form = ProductoForm()
         return render(request, 'anyadirProducto.html', {'form': form})
@@ -81,7 +81,7 @@ class anyadirProductoView(View):
             return redirect('base')
         return render(request, 'anyadirProducto.html', {'form': form})
     
-class anyadirComponenteView(View):
+class AnyadirComponenteView(View):
     def get(self, request, *args, **kwargs):
         form = ComponenteForm()
         return render(request, 'anyadirComponente.html', {'form': form})
@@ -93,7 +93,7 @@ class anyadirComponenteView(View):
             return redirect('base')
         return render(request, 'anyadirComponente.html', {'form': form})
     
-class anyadirPedidoView(View):
+class AnyadirPedidoView(View):
     def get(self, request, *args, **kwargs):
         form = PedidoForm()
         return render(request, 'anyadirPedido.html', {'form': form})
@@ -105,7 +105,7 @@ class anyadirPedidoView(View):
             return redirect('base')
         return render(request, 'anyadirPedido.html', {'form': form})
 
-class anyadirComponenteProductoView(View):
+class AnyadirComponenteProductoView(View):
     def get(self, request, *args, **kwargs):
         form = ComponenteForm()
         return render(request, 'anyadirComponenteProducto.html', {'form': form})
@@ -152,46 +152,46 @@ def detalleProductoView(request, pk):
     }
     return render(request, 'detalleProducto.html', context)
 
-class eliminarProductoView(DeleteView):
+class EliminarProductoView(DeleteView):
     model = Producto  
     template_name = 'eliminarProducto.html'  
     success_url = reverse_lazy('base') 
     
-class eliminarComponenteView(DeleteView):
+class EliminarComponenteView(DeleteView):
     model = Componente  
     template_name = 'eliminarComponente.html'  
     success_url = reverse_lazy('base')
     
-class eliminarClienteView(DeleteView):
+class EliminarClienteView(DeleteView):
     model = Cliente  
     template_name = 'eliminarCliente.html'  
     success_url = reverse_lazy('base')
     
-class eliminarPedidoView(DeleteView):
+class EliminarPedidoView(DeleteView):
     model = Pedido
     template_name = 'eliminarPedido.html'
     success_url = reverse_lazy('base')
     
-class modificarProductoView(UpdateView):
+class ModificarProductoView(UpdateView):
     model = Producto
     template_name = 'modificarProducto.html'
     fields = ['nombre', 'categoria', 'descripcion', 'precio']
     success_url = reverse_lazy('base')
 
-class modificarComponenteView(UpdateView):
+class ModificarComponenteView(UpdateView):
     model = Componente
     template_name = 'modificarComponente.html'
     fields = ['nombre', 'marca']
     success_url = reverse_lazy('base')
         
         
-class modificarClienteView(UpdateView):
+class ModificarClienteView(UpdateView):
     model = Cliente
     template_name = 'modificarCliente.html'
     fields = ['CIF', 'nombreEmpresa', 'direccion', 'datosContacto']
     success_url = reverse_lazy('base')
         
-class modificarPedidoView(UpdateView):
+class ModificarPedidoView(UpdateView):
     model = Pedido
     template_name = 'modificarPedido.html'
     fields = ['cantidadproducto', 'precioTotal']

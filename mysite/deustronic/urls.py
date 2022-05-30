@@ -7,12 +7,12 @@ urlpatterns = [
 
     #path('iniciarSesion', views.iniciarSesion, name = 'iniciarSesion'),
     
-    path('anyadirPedidoProducto', anyadirPedidoView.as_view(), name='anyadirPedidoProducto'),
-    path('anyadirComponenteProducto', anyadirComponenteProductoView.as_view(), name='anyadirComponenteProducto'),
-    path('anyadirProducto', anyadirProductoView.as_view(), name='anyadirProducto'),
-    path('anyadirPedido', anyadirPedidoView.as_view(), name='anyadirPedido'),
-    path('anyadirComponente', anyadirComponenteView.as_view(), name='anyadirComponente'),
-    path('anyadirCliente', anyadirClienteView.as_view(), name='anyadirCliente'),
+    path('anyadirPedidoProducto', AnyadirPedidoView.as_view(), name='anyadirPedidoProducto'),
+    path('anyadirComponenteProducto', AnyadirComponenteProductoView.as_view(), name='anyadirComponenteProducto'),
+    path('anyadirProducto', AnyadirProductoView.as_view(), name='anyadirProducto'),
+    path('anyadirPedido', AnyadirPedidoView.as_view(), name='anyadirPedido'),
+    path('anyadirComponente', AnyadirComponenteView.as_view(), name='anyadirComponente'),
+    path('anyadirCliente', AnyadirClienteView.as_view(), name='anyadirCliente'),
 
     
     path('detalleProducto/<int:pk>/', detalleProductoView, name='detalleProducto'),
@@ -20,15 +20,15 @@ urlpatterns = [
     path('detalleCliente/<int:pk>/', detalleClienteView, name='detalleCliente'),
     path('detalleComponente/<int:pk>/', detalleComponenteView, name='detalleComponente'),
     
-    path('modificarProducto/<int:pk>/', modificarProductoView.as_view(), name='modificarProducto'),
-    path('modificarPedido/<int:pk>/', modificarPedidoView.as_view(), name='modificarPedido'),
-    path('modificarComponente/<int:pk>/', modificarComponenteView.as_view(), name='modificarComponente'),
-    path('modificarCliente/<int:pk>/', modificarClienteView.as_view(), name='modificarCliente'),
+    path('modificarProducto/<int:pk>/', ModificarProductoView.as_view(), name='modificarProducto'),
+    path('modificarPedido/<int:pk>/', ModificarPedidoView.as_view(), name='modificarPedido'),
+    path('modificarComponente/<int:pk>/', ModificarComponenteView.as_view(), name='modificarComponente'),
+    path('modificarCliente/<int:pk>/', ModificarClienteView.as_view(), name='modificarCliente'),
     
-    path('eliminarProducto/<int:pk>/', eliminarProductoView.as_view(), name='eliminarProducto'),
-    path('eliminarPedido/<int:pk>/', eliminarPedidoView.as_view(), name='eliminarPedido'),
-    path('eliminarComponente/<int:pk>/', eliminarComponenteView.as_view(), name='eliminarComponente'),
-    path('eliminarCliente/<int:pk>/', eliminarClienteView.as_view(), name='eliminarCliente'),
+    path('eliminarProducto/<int:pk>/', EliminarProductoView.as_view(), name='eliminarProducto'),
+    path('eliminarPedido/<int:pk>/', EliminarPedidoView.as_view(), name='eliminarPedido'),
+    path('eliminarComponente/<int:pk>/', EliminarComponenteView.as_view(), name='eliminarComponente'),
+    path('eliminarCliente/<int:pk>/', EliminarClienteView.as_view(), name='eliminarCliente'),
     
     path('listadoProducto', views.listadoProducto, name='listadoProducto'),
     path('listadoComponente', views.listadoComponente, name='listadoComponente'),

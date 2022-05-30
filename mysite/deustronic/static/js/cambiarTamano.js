@@ -1,20 +1,12 @@
 const ajustes = document.getElementById('cambiarTamano');
 
 
-// RESTAURAR ESTILOS ANTERIORES
-obtenerEstilosAnteriores();
 
-function obtenerEstilosAnteriores() {
-  let fuente = localStorage.getItem("fuente");
-  document.documentElement.style.setProperty('--font-size', fuente);
-}
-
-
-// CONTROL DE TAMAÑO DE FUENTE
+// TAMAÑO DE FUENTE
 const getFontSize = () =>
   parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--font-size'))
 
-const subirFuente = element => {
+const aumentarTamano = element => {
   element.addEventListener('click', () => {
     let fontSize = getFontSize()
     document.documentElement.style.setProperty('--font-size', `${fontSize * 1.1}`)
@@ -22,7 +14,7 @@ const subirFuente = element => {
   })
 }
 
-const bajarFuente = element => {
+const bajarTamano = element => {
   element.addEventListener('click', () => {
     let fontSize = getFontSize()
     document.documentElement.style.setProperty('--font-size', `${fontSize * 0.9}`)
@@ -35,5 +27,5 @@ addEventListener('keyup', e => {
   if (e.key === 'ArrowDown') document.getElementById('bajarTamaño').click()
 })
 
-subirFuente(document.getElementById('aumentarTamaño'))
-bajarFuente(document.getElementById('bajarTamaño'))
+aumentarTamano(document.getElementById('aumentarTamaño'))
+bajarTamano(document.getElementById('bajarTamaño'))
