@@ -12,6 +12,7 @@
     position: fixed;
     border-bottom: 2px solid rgb(241, 241, 241);
     background-color: rgb(23, 89, 175);
+    z-index: 1;
 }
 
 .menu{
