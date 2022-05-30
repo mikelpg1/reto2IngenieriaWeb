@@ -14,7 +14,7 @@
                 <div class="listadostitulo">
                         <h3>LISTADO DE CLIENTES</h3>
                             {% if perms.appGestionDePedidos.add_cliente %}
-                              <a class="añadir" href="http://127.0.0.1:8000/deustronic/anyadirCliente">+</a>
+                              <a class="añadir" href="{% url 'anyadirCliente' %}">+</a>
                             {% endif %}
                 </div>
             </header>

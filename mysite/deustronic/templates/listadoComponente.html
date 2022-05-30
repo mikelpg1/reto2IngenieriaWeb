@@ -16,7 +16,7 @@
                 <div class="listadostitulo">
                         <h3>LISTADO DE COMPONENTES</h3>
                             {% if perms.appGestionDePedidos.add_componente %}
-                              <a class="añadir" href="http://127.0.0.1:8000/deustronic/anyadirComponente">+</a>
+                              <a class="añadir" href="{% url 'anyadirComponente' %}">+</a>
                             {% endif %}
                 </div> 
     </header>

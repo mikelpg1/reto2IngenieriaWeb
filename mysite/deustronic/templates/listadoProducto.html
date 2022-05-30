@@ -15,7 +15,7 @@
                 <div class="listadostitulo">
                     <h3>LISTADO DE PRODUCTOS</h3>
                         {% if perms.appGestionDePedidos.add_producto %}
-                            <a class="añadir" href="http://127.0.0.1:8000/deustronic/anyadirProducto">+</a>
+                            <a class="añadir" href="{% url 'anyadirProducto' %}">+</a>
                         {% endif %}
                 </div> 
             </header>
@@ -32,7 +32,7 @@
                                 <li>
                                     <span>{{producto.pk}}</span>{{producto.nombre}}
                                     <!--Solo se podrá visualizar si se tiene acceso-->
-                                    {% if perms.appGestionDePedidos.view_producto %}
+                                    {% if perms.appGestionDePedidos.view_producto %} 
                                         <a class="detalles" href="http://127.0.0.1:8000/deustronic/detalleProducto/{{producto.pk}}/">detalles</a>
                                     {% endif %}  
                                     <!--Solo se podrá visualizar si se tiene acceso-->
