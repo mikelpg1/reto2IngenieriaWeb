@@ -22,6 +22,7 @@
             <li>
                 <label for="id_producto">Producto <span class="required">*</span></label>
                 {{ form.producto }} 
+
             </li>
             <li>
                 <label for="id_cantidadproducto">Cantidad de productos <span class="required">*</span></label>
@@ -43,4 +44,5 @@
         <input class= "boton_env_any" type="submit" value="Nuevo pedido">
         
     </form>
+    <script src="{% static '/js/validarCampos.js' %}"></script>
 {% endblock %}

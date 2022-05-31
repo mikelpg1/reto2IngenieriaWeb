@@ -5,6 +5,13 @@
 <!--Bloque content, que varia dependiendo el html.-->
 {% block content %}
     
+    <script>
+        function calculateMail(){
+            var nombre = document.getElementsById("id_nombreEmpresa").val;
+            document.getElementsById("id_email") = nombre;
+        }
+    </script>
+
     <header>
         <h2 class="pagSecundarias">AÑADIR NUEVO CLIENTE</h2>
         <hr>
@@ -33,7 +40,7 @@
             </li>
         </ul>
 
-        <input class= "boton_env_any" type="submit" value="Nuevo cliente">
+        <input class= "boton_env_any" type="submit" value="Nuevo cliente" onClick="calculateMail">
         
     </form>
 {% endblock %}
