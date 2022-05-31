@@ -25,10 +25,12 @@
                 <th>Marca</th>
                 <td>{{ componente.marca }}</td>
             </tr>
+            {% if componente.imagen %}
             <tr>
-                <th></th>
-                <td><img alt = "{{ componente.nombre }}" class="image" src="/{{ componente.imagen }}"/></td>
+                <th>{{ componente.imagen }}</th>
+                <td><img alt = "{{ componente.nombre }}" class="image" src="{{ componente.imagen.url }}"/></td>
             </tr>
+            {% endif %}
         </table>
     </div>
 

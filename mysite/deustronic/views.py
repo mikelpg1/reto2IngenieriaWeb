@@ -130,6 +130,7 @@ def detallePedidoView(request, pk):
 
 def detalleComponenteView(request, pk):
     componente = get_object_or_404(Componente, pk=pk)
+    print(componente.imagen)
     return render(request, 'detalleComponente.html', {'componente': componente})
     
 def detalleClienteView(request, pk):
