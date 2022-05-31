@@ -122,9 +122,10 @@ class AnyadirComponenteProductoView(View):
 # VER PEDIDO #
 def detallePedidoView(request, pk):
     pedido = get_object_or_404(Pedido, pk=pk)
-    
+    producto = get_list_or_404(P)
     context = {
         'pedido': pedido,
+        
     }
     return render(request, 'detallePedido.html', context)
 
